@@ -26,7 +26,12 @@ final class SettingsStore {
         defaults.set(data, forKey: Self.key)
     }
 
+    static let maxPinnedApps = 5
+
+    var canAddMore: Bool { settings.pinnedApps.count < Self.maxPinnedApps }
+
     func addApp(_ bundleId: String, name: String) {
+        guard canAddMore else { return }
         guard !settings.pinnedApps.contains(where: { $0.bundleIdentifier == bundleId }) else { return }
         let order = settings.pinnedApps.count
         settings.pinnedApps.append(FloatingApp(bundleIdentifier: bundleId, appName: name, order: order))

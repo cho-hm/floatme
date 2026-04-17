@@ -7,3 +7,4 @@ DerivedData/
 .serena/
 .claude/
 .playwright-mcp/
+dist/

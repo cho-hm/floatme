@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FloatMe — Design Documents</title>
+  <link rel="stylesheet" href="styles/common.css">
+  <style>
+    body { display: flex; justify-content: center; padding: 40px 20px; }
+    .index-container { max-width: 960px; width: 100%; }
+    .index-header { text-align: center; margin-bottom: 40px; }
+    .index-header h1 { font-size: 2.4rem; margin-bottom: 8px; }
+    .index-header .subtitle { color: var(--text-secondary); font-size: 1.05rem; }
+    .index-meta { display: flex; justify-content: center; gap: 20px; margin-top: 12px; font-size: 0.85rem; color: var(--text-light); }
+  </style>
+</head>
+<body>
+  <div class="index-container">
+
+  <div class="index-header">
+    <h1>FloatMe</h1>
+    <p class="subtitle">macOS Floating App Switcher — 실행 중인 앱을 플로팅 아이콘으로 빠르게 전환</p>
+    <div class="index-meta">
+      <span>Version: v0.1 (Draft)</span>
+      <span>Platform: macOS 15+</span>
+      <span>MIT License</span>
+      <span>DMG</span>
+      <span>Date: 2026-04-17</span>
+    </div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:20px; margin-top:32px;">
+
+    <div style="border:1px solid var(--border-color); border-radius:12px; padding:24px; background:var(--bg-card);">
+      <h3 style="margin:0 0 8px;"><a href="prd.html" style="color:var(--text-primary); text-decoration:none;">PRD</a></h3>
+      <p style="color:var(--text-secondary); font-size:0.9rem; margin:0 0 12px;">제품 요구사항 정의서</p>
+      <ul style="font-size:0.85rem; color:var(--text-light); padding-left:18px; margin:0;">
+        <li>Product Overview</li>
+        <li>기능 요구사항 (9개)</li>
+        <li>편집 모드 (Long Press)</li>
+        <li>인터랙션 모델</li>
+      </ul>
+    </div>
+
+    <div style="border:1px solid var(--border-color); border-radius:12px; padding:24px; background:var(--bg-card);">
+      <h3 style="margin:0 0 8px;"><a href="technical-decisions.html" style="color:var(--text-primary); text-decoration:none;">ADR</a></h3>
+      <p style="color:var(--text-secondary); font-size:0.9rem; margin:0 0 12px;">기술 결정 기록</p>
+      <ul style="font-size:0.85rem; color:var(--text-light); padding-left:18px; margin:0;">
+        <li>UI 프레임워크 선택</li>
+        <li>플로팅 윈도우 구현</li>
+        <li>앱 감지 전략</li>
+        <li>설정 저장 방식</li>
+      </ul>
+    </div>
+
+    <div style="border:1px solid var(--border-color); border-radius:12px; padding:24px; background:var(--bg-card);">
+      <h3 style="margin:0 0 8px;"><a href="Wireframe/index.html" style="color:var(--text-primary); text-decoration:none;">Wireframe</a></h3>
+      <p style="color:var(--text-secondary); font-size:0.9rem; margin:0 0 12px;">UI 와이어프레임</p>
+      <ul style="font-size:0.85rem; color:var(--text-light); padding-left:18px; margin:0;">
+        <li>플로팅 바 (가로/세로)</li>
+        <li>편집 모드 (흔들림/X/+)</li>
+        <li>앱 선택 팝업</li>
+        <li>설정 화면</li>
+      </ul>
+    </div>
+
+    <div style="border:1px solid var(--border-color); border-radius:12px; padding:24px; background:var(--bg-card);">
+      <h3 style="margin:0 0 8px;"><a href="api-definition.html" style="color:var(--text-primary); text-decoration:none;">데이터 정의</a></h3>
+      <p style="color:var(--text-secondary); font-size:0.9rem; margin:0 0 12px;">내부 데이터 모델</p>
+      <ul style="font-size:0.85rem; color:var(--text-light); padding-left:18px; margin:0;">
+        <li>FloatingApp / AppSettings</li>
+        <li>ER 다이어그램</li>
+        <li>Enum 정의</li>
+      </ul>
+    </div>
+
+    <div style="border:1px solid var(--border-color); border-radius:12px; padding:24px; background:var(--bg-card);">
+      <h3 style="margin:0 0 8px;"><a href="user-stories.html" style="color:var(--text-primary); text-decoration:none;">User Stories</a></h3>
+      <p style="color:var(--text-secondary); font-size:0.9rem; margin:0 0 12px;">사용자 시나리오 (Gherkin)</p>
+      <ul style="font-size:0.85rem; color:var(--text-light); padding-left:18px; margin:0;">
+        <li>6개 기능 / 24개 시나리오</li>
+        <li>정상/실패/엣지 케이스</li>
+      </ul>
+    </div>
+
+    <div style="border:1px solid var(--border-color); border-radius:12px; padding:24px; background:var(--bg-card);">
+      <h3 style="margin:0 0 8px;"><a href="SPEC-DECISIONS.md" style="color:var(--text-primary); text-decoration:none;">Spec Decisions</a></h3>
+      <p style="color:var(--text-secondary); font-size:0.9rem; margin:0 0 12px;">인터뷰 기반 스펙 결정서</p>
+      <ul style="font-size:0.85rem; color:var(--text-light); padding-left:18px; margin:0;">
+        <li>배포/라이선스 결정</li>
+        <li>편집 모드 UX</li>
+        <li>v0.1 / v0.2 스코프</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div style="margin-top:40px;">
+    <h2 style="font-size:1.2rem; margin-bottom:16px;">Tech Stack</h2>
+    <div style="display:flex; flex-wrap:wrap; gap:8px;">
+      <span style="padding:4px 12px; border-radius:20px; background:#e3f2fd; color:#1565c0; font-size:0.82rem;">Swift 5.9+</span>
+      <span style="padding:4px 12px; border-radius:20px; background:#e8f5e9; color:#2e7d32; font-size:0.82rem;">SwiftUI</span>
+      <span style="padding:4px 12px; border-radius:20px; background:#fff3e0; color:#e65100; font-size:0.82rem;">AppKit</span>
+      <span style="padding:4px 12px; border-radius:20px; background:#f3e5f5; color:#7b1fa2; font-size:0.82rem;">NSVisualEffectView</span>
+      <span style="padding:4px 12px; border-radius:20px; background:#e0f2f1; color:#00695c; font-size:0.82rem;">macOS 15+</span>
+      <span style="padding:4px 12px; border-radius:20px; background:#fff9c4; color:#f57f17; font-size:0.82rem;">Sparkle</span>
+      <span style="padding:4px 12px; border-radius:20px; background:#fce4ec; color:#c62828; font-size:0.82rem;">NSPanel</span>
+    </div>
+  </div>
+
+  <div style="text-align:center; margin-top:48px; padding-top:20px; border-top:1px solid var(--border-color); font-size:0.8rem; color:var(--text-light);">
+    Generated by /doc skill · 2026-04-17
+  </div>
+  </div>
+</body>
+</html>

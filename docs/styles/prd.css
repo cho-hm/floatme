@@ -1,0 +1,78 @@
+/* prd.css — PRD 전용 스타일 */
+
+/* 헤더 배너 */
+.prd-banner {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  color: var(--text-inverse);
+  padding: 40px 48px;
+  border-radius: var(--border-radius-lg);
+  margin-bottom: 32px;
+}
+.prd-banner h1 { font-size: 2.2rem; margin-bottom: 8px; }
+.prd-banner .meta { font-size: 0.9rem; opacity: 0.8; }
+
+/* Requirement 카드 */
+.req-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.req-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px) scale(1.01);
+}
+.req-card .req-number {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.req-card h3 {
+  margin: 6px 0;
+  font-size: 1rem;
+}
+.req-card p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+/* 메뉴 구조 */
+.menu-tree {
+  background: #f5f5f8;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.8;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+/* URL 구조 테이블 정렬 */
+.sortable-table th {
+  cursor: pointer;
+  user-select: none;
+}
+.sortable-table th:hover { background: #e5e9ed; }
+.sortable-table th::after {
+  content: " \2195";
+  font-size: 0.7rem;
+  color: var(--text-light);
+}
+.sortable-table th.sort-asc::after { content: " \2191"; color: var(--color-info); }
+.sortable-table th.sort-desc::after { content: " \2193"; color: var(--color-info); }
+
+/* Target Users 카드 */
+.user-card {
+  text-align: center;
+  padding: 20px;
+}
+.user-card .user-icon {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+.user-card h4 { font-size: 0.95rem; margin-bottom: 4px; }
+.user-card p { font-size: 0.82rem; color: var(--text-secondary); }

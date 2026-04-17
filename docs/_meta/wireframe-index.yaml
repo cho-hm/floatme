@@ -1,0 +1,84 @@
+product_name: "FloatMe"
+page_title: "Wireframe"
+version: "v0.1"
+doc_type_label: "Wireframe"
+html_rel_path: "Wireframe"
+extra_css:
+  - wireframe.css
+mermaid_start_on_load: false
+template: "base"
+output_filename: "index.html"
+toc_items: |
+  <li><a href="sections/01-floating-bar.html" class="section-link">1. 플로팅 바</a></li>
+  <li><a href="sections/02-app-selector.html" class="section-link">2. 앱 선택 팝업</a></li>
+  <li><a href="sections/03-settings.html" class="section-link">3. 설정</a></li>
+content: |
+  <div class="section-header">
+    <h1>FloatMe Wireframe</h1>
+    <p>v0.1 · 2026-04-17</p>
+  </div>
+
+  <table class="screen-meta" style="margin:16px 0;">
+    <tr><th>Product</th><td>FloatMe</td></tr>
+    <tr><th>Version</th><td>v0.1</td></tr>
+    <tr><th>Date</th><td>2026-04-17</td></tr>
+    <tr><th>Status</th><td>Draft</td></tr>
+    <tr><th>Platform</th><td>macOS 13+ (Desktop Native)</td></tr>
+  </table>
+
+  <div class="index-grid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:16px; margin:24px 0;">
+    <div class="index-card" style="border:1px solid var(--border-color); border-radius:8px; padding:20px; background:var(--bg-card);">
+      <h3><a href="sections/01-floating-bar.html">1. 플로팅 바 (Floating Bar)</a></h3>
+      <p style="font-size:0.88rem; color:var(--text-secondary);">항상 최상위에 표시되는 앱 아이콘 바</p>
+      <ul class="index-links" style="font-size:0.85rem; margin-top:8px;">
+        <li><a href="sections/01-floating-bar.html#horizontal">1.1 가로 레이아웃</a></li>
+        <li><a href="sections/01-floating-bar.html#vertical">1.2 세로 레이아웃</a></li>
+        <li><a href="sections/01-floating-bar.html#context-menu">1.3 컨텍스트 메뉴</a></li>
+      </ul>
+    </div>
+    <div class="index-card" style="border:1px solid var(--border-color); border-radius:8px; padding:20px; background:var(--bg-card);">
+      <h3><a href="sections/02-app-selector.html">2. 앱 선택 팝업 (App Selector)</a></h3>
+      <p style="font-size:0.88rem; color:var(--text-secondary);">실행 중인 앱 목록에서 플로팅에 추가</p>
+      <ul class="index-links" style="font-size:0.85rem; margin-top:8px;">
+        <li><a href="sections/02-app-selector.html#popup">2.1 앱 선택 팝업</a></li>
+      </ul>
+    </div>
+    <div class="index-card" style="border:1px solid var(--border-color); border-radius:8px; padding:20px; background:var(--bg-card);">
+      <h3><a href="sections/03-settings.html">3. 설정 (Settings)</a></h3>
+      <p style="font-size:0.88rem; color:var(--text-secondary);">메뉴바 드롭다운 설정</p>
+      <ul class="index-links" style="font-size:0.85rem; margin-top:8px;">
+        <li><a href="sections/03-settings.html#menubar">3.1 메뉴바 메뉴</a></li>
+        <li><a href="sections/03-settings.html#preferences">3.2 환경설정</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 style="margin-top:32px;">사이트맵</h2>
+  <div class="sitemap-wrapper" style="border:1px solid var(--border-color); border-radius:8px; padding:20px; background:var(--bg-card); margin:12px 0;">
+    <div class="sitemap-root" style="text-align:center; margin-bottom:16px;"><strong>FloatMe</strong></div>
+    <div class="sitemap-branches" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:16px;">
+      <div class="sitemap-column">
+        <div class="sitemap-column-header" style="font-weight:600; margin-bottom:8px; padding-bottom:4px; border-bottom:2px solid var(--primary-color);">플로팅 바</div>
+        <div class="sitemap-item" style="font-size:0.85rem; padding:4px 0;">가로 모드</div>
+        <div class="sitemap-item" style="font-size:0.85rem; padding:4px 0;">세로 모드</div>
+        <div class="sitemap-item" style="font-size:0.85rem; padding:4px 0;">컨텍스트 메뉴</div>
+      </div>
+      <div class="sitemap-column">
+        <div class="sitemap-column-header" style="font-weight:600; margin-bottom:8px; padding-bottom:4px; border-bottom:2px solid var(--primary-color);">팝업</div>
+        <div class="sitemap-item" style="font-size:0.85rem; padding:4px 0;">앱 선택</div>
+      </div>
+      <div class="sitemap-column">
+        <div class="sitemap-column-header" style="font-weight:600; margin-bottom:8px; padding-bottom:4px; border-bottom:2px solid var(--primary-color);">설정</div>
+        <div class="sitemap-item" style="font-size:0.85rem; padding:4px 0;">메뉴바 메뉴</div>
+        <div class="sitemap-item" style="font-size:0.85rem; padding:4px 0;">환경설정 창</div>
+      </div>
+    </div>
+  </div>
+
+  <h2 style="margin-top:24px;">변경 이력</h2>
+  <table class="changelog-table striped-table">
+    <thead><tr><th>Version</th><th>Date</th><th>Author</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td>0.1</td><td>2026-04-17</td><td>-</td><td>초기 와이어프레임 생성</td></tr>
+    </tbody>
+  </table>

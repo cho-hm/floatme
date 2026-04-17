@@ -49,16 +49,26 @@ struct AppSelectorView: View {
                             .cornerRadius(8)
                         }
                         .buttonStyle(.plain)
+                        .disabled(!isPinned && !store.canAddMore)
+                        .opacity(!isPinned && !store.canAddMore ? 0.4 : 1)
                     }
                 }
                 .padding(.horizontal, 8)
             }
             .frame(maxHeight: 240)
 
+            if !store.canAddMore {
+                Text("최대 \(SettingsStore.maxPinnedApps)개까지 등록 가능합니다")
+                    .font(.caption2)
+                    .foregroundStyle(.orange)
+                    .padding(.horizontal, 12)
+                    .padding(.top, 4)
+            }
+
             HStack {
                 Text("실행 중 \(monitor.runningApps.count)개")
                 Spacer()
-                Text("플로팅 \(store.settings.pinnedApps.count)개")
+                Text("플로팅 \(store.settings.pinnedApps.count)/\(SettingsStore.maxPinnedApps)")
             }
             .font(.caption)
             .foregroundStyle(.secondary)

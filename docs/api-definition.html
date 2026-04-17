@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>데이터 정의 — FloatMe</title>
+<link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="styles/api.css">
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({ startOnLoad: true, theme: 'default', securityLevel: 'loose' });</script>
+</head>
+<body>
+<div class="page-wrapper">
+<nav class="sidebar" id="sidebar">
+<div class="sidebar-title"><a href="index.html">FloatMe</a></div>
+<div class="sidebar-section-label">Data Definition v0.1</div>
+<ul class="sidebar-menu">
+<li><a href="index.html" class="sidebar-home-link">Home</a></li>
+<li class="sidebar-divider"></li>
+<li><a href="#data-models">데이터 모델</a></li>
+<li><a href="#er-diagram">ER 다이어그램</a></li>
+<li><a href="#model-floatingapp">FloatingApp</a></li>
+<li><a href="#model-appsettings">AppSettings</a></li>
+<li><a href="#model-barposition">BarPosition</a></li>
+<li><a href="#enums">Enum 정의</a></li>
+
+</ul>
+</nav>
+<button class="sidebar-toggle" aria-label="메뉴 열기">&#9776;</button>
+<main class="main-content">
+<div class="section-header">
+  <h1>FloatMe 데이터 정의</h1>
+  <p>내부 데이터 모델 · v0.1 · 2026-04-17</p>
+</div>
+
+<p style="color:var(--text-secondary); margin:16px 0;">
+  FloatMe는 네이티브 macOS 앱으로 REST API 없이 내부 데이터 모델만 정의한다.
+  모든 데이터는 <code>UserDefaults</code>에 <code>Codable</code> JSON으로 저장된다.
+</p>
+
+<!-- ===== 데이터 모델 ===== -->
+<div class="section-header" id="data-models">
+  <h2>데이터 모델</h2>
+</div>
+
+<div class="api-dashboard" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(140px, 1fr)); gap:12px; margin:16px 0;">
+  <div style="border:1px solid var(--border-color); border-radius:8px; padding:16px; text-align:center; background:var(--bg-card);">
+    <div style="font-size:1.6rem; font-weight:700; color:var(--primary-color);">3</div>
+    <div style="font-size:0.82rem; color:var(--text-light);">Struct</div>
+  </div>
+  <div style="border:1px solid var(--border-color); border-radius:8px; padding:16px; text-align:center; background:var(--bg-card);">
+    <div style="font-size:1.6rem; font-weight:700; color:#ff9800;">2</div>
+    <div style="font-size:0.82rem; color:var(--text-light);">Enum</div>
+  </div>
+  <div style="border:1px solid var(--border-color); border-radius:8px; padding:16px; text-align:center; background:var(--bg-card);">
+    <div style="font-size:1.6rem; font-weight:700; color:#4caf50;">11</div>
+    <div style="font-size:0.82rem; color:var(--text-light);">Fields</div>
+  </div>
+</div>
+
+<!-- ===== ER Diagram ===== -->
+<div class="section-header" id="er-diagram">
+  <h2>ER 다이어그램</h2>
+</div>
+<div class="diagram-container" style="text-align:center; margin:20px 0;">
+  <div class="mermaid">
+erDiagram
+  AppSettings ||--o{ FloatingApp : "pinnedApps"
+  AppSettings ||--|| BarPosition : "position"
+  AppSettings {
+    BarOrientation orientation
+    Int iconSize
+    Float backgroundOpacity
+    Boolean autoRemoveTerminated
+    Boolean hideInFullscreen
+    Boolean launchAtLogin
+    Boolean hideDockIcon
+  }
+  FloatingApp {
+    String bundleIdentifier
+    String appName
+    Int order
+  }
+  BarPosition {
+    Double x
+    Double y
+  }
+  </div>
+</div>
+
+<!-- ===== FloatingApp ===== -->
+<div class="section-header" id="model-floatingapp">
+  <h2>FloatingApp</h2>
+</div>
+<p>플로팅 바에 고정된 개별 앱 정보. Bundle Identifier로 앱을 식별한다.</p>
+<table class="striped-table">
+  <thead><tr><th>필드</th><th>타입</th><th>필수</th><th>설명</th><th>예시</th></tr></thead>
+  <tbody>
+    <tr><td><code>bundleIdentifier</code></td><td>String</td><td>Y</td><td>앱 고유 식별자 (macOS Bundle ID)</td><td><code>"com.apple.dt.Xcode"</code></td></tr>
+    <tr><td><code>appName</code></td><td>String</td><td>Y</td><td>앱 표시명 (저장 시점 캐시)</td><td><code>"Xcode"</code></td></tr>
+    <tr><td><code>order</code></td><td>Int</td><td>Y</td><td>플로팅 바 내 표시 순서 (0부터)</td><td><code>0</code></td></tr>
+  </tbody>
+</table>
+
+<!-- ===== AppSettings ===== -->
+<div class="section-header" id="model-appsettings">
+  <h2>AppSettings</h2>
+</div>
+<p>사용자 설정 전체를 담는 루트 모델. UserDefaults에 단일 JSON으로 저장.</p>
+<table class="striped-table">
+  <thead><tr><th>필드</th><th>타입</th><th>기본값</th><th>설명</th></tr></thead>
+  <tbody>
+    <tr><td><code>pinnedApps</code></td><td>[FloatingApp]</td><td>[]</td><td>플로팅에 고정된 앱 목록 (순서 보장)</td></tr>
+    <tr><td><code>position</code></td><td>BarPosition</td><td>{100, 100}</td><td>플로팅 바 좌상단 좌표</td></tr>
+    <tr><td><code>orientation</code></td><td>BarOrientation</td><td>.horizontal</td><td>배치 방향</td></tr>
+    <tr><td><code>iconSize</code></td><td>Int</td><td>36</td><td>아이콘 크기 (px, 24~48 범위)</td></tr>
+    <tr><td><code>backgroundOpacity</code></td><td>Float</td><td>0.8</td><td>플로팅 바 배경 투명도 (0.5~1.0)</td></tr>
+    <tr><td><code>autoRemoveTerminated</code></td><td>Bool</td><td>true</td><td>종료된 앱 자동 제거 여부</td></tr>
+    <tr><td><code>hideInFullscreen</code></td><td>Bool</td><td>true</td><td>전체화면 Space에서 숨김 여부</td></tr>
+    <tr><td><code>launchAtLogin</code></td><td>Bool</td><td>false</td><td>로그인 시 자동 시작</td></tr>
+    <tr><td><code>hideDockIcon</code></td><td>Bool</td><td>false</td><td>Dock 아이콘 숨김 (메뉴바 전용 모드)</td></tr>
+  </tbody>
+</table>
+
+<!-- ===== BarPosition ===== -->
+<div class="section-header" id="model-barposition">
+  <h2>BarPosition</h2>
+</div>
+<p>플로팅 바의 화면 좌표. 드래그 종료 시 저장.</p>
+<table class="striped-table">
+  <thead><tr><th>필드</th><th>타입</th><th>설명</th></tr></thead>
+  <tbody>
+    <tr><td><code>x</code></td><td>Double</td><td>화면 좌상단 기준 X 좌표 (pt)</td></tr>
+    <tr><td><code>y</code></td><td>Double</td><td>화면 좌상단 기준 Y 좌표 (pt)</td></tr>
+  </tbody>
+</table>
+
+<!-- ===== Enum ===== -->
+<div class="section-header" id="enums">
+  <h2>Enum 정의</h2>
+</div>
+
+<h3>BarOrientation</h3>
+<table class="striped-table">
+  <thead><tr><th>Case</th><th>Raw Value</th><th>설명</th></tr></thead>
+  <tbody>
+    <tr><td><code>.horizontal</code></td><td>"horizontal"</td><td>가로 배치 (좌→우)</td></tr>
+    <tr><td><code>.vertical</code></td><td>"vertical"</td><td>세로 배치 (위→아래)</td></tr>
+  </tbody>
+</table>
+
+<h3 style="margin-top:20px;">AppState (런타임 전용, 비저장)</h3>
+<table class="striped-table">
+  <thead><tr><th>Case</th><th>설명</th></tr></thead>
+  <tbody>
+    <tr><td><code>.running</code></td><td>앱이 실행 중 — 아이콘 정상 표시</td></tr>
+    <tr><td><code>.terminated</code></td><td>앱이 종료됨 — 흐리게 표시 또는 제거</td></tr>
+    <tr><td><code>.active</code></td><td>현재 포커스된 앱 — 하이라이트 표시</td></tr>
+  </tbody>
+</table>
+</main>
+</div>
+<script>
+(function() {
+  'use strict';
+
+  // === 유틸리티 ===
+  function qs(sel, ctx) { return (ctx || document).querySelector(sel); }
+  function qsa(sel, ctx) { return Array.from((ctx || document).querySelectorAll(sel)); }
+
+  // === 사이드바 모바일 토글 ===
+  var toggle = qs('.sidebar-toggle');
+  var sidebar = qs('.sidebar');
+  if (toggle && sidebar) {
+    toggle.addEventListener('click', function() {
+      sidebar.classList.toggle('open');
+    });
+  }
+
+  // === 사이드바 스크롤 추적 ===
+  var tocLinks = qsa('.sidebar-menu a[href^="#"]');
+  if (tocLinks.length > 0) {
+    var sections = tocLinks.map(function(a) {
+      return document.getElementById(a.getAttribute('href').slice(1));
+    }).filter(Boolean);
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          tocLinks.forEach(function(l) { l.classList.remove('active'); });
+          var link = qs('.sidebar-menu a[href="#' + entry.target.id + '"]');
+          if (link) link.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -60% 0px' });
+
+    sections.forEach(function(s) { observer.observe(s); });
+  }
+
+  // === 접기/펼치기 (이벤트 위임) ===
+  document.addEventListener('click', function(e) {
+    var header = e.target.closest('.collapsible-header');
+    if (!header) return;
+    header.classList.toggle('open');
+    var body = header.nextElementSibling;
+    if (body && body.classList.contains('collapsible-body')) {
+      body.hidden = !body.hidden;
+    }
+
+    // Mermaid lazy 렌더링 (아코디언 열림 시)
+    if (body && !body.hidden && typeof mermaid !== 'undefined') {
+      qsa('.mermaid-lazy:not([data-mermaid-done])', body).forEach(function(el) {
+        var id = 'mermaid-' + Math.random().toString(36).slice(2, 9);
+        var code = el.textContent.trim();
+        if (code) {
+          mermaid.render(id, code).then(function(result) {
+            // mermaid.render 는 안전한 SVG를 반환 (외부 입력 아님)
+            el.replaceChildren();
+            el.insertAdjacentHTML('afterbegin', result.svg);
+            el.classList.add('rendered');
+            el.setAttribute('data-mermaid-done', 'true');
+          });
+        }
+      });
+    }
+  });
+
+  // === 모두 펼치기/접기 ===
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest('.toggle-all-btn');
+    if (!btn) return;
+    var expand = btn.getAttribute('data-state') !== 'open';
+    qsa('.collapsible-header').forEach(function(h) {
+      var body = h.nextElementSibling;
+      if (body && body.classList.contains('collapsible-body')) {
+        if (expand) {
+          h.classList.add('open');
+          body.hidden = false;
+        } else {
+          h.classList.remove('open');
+          body.hidden = true;
+        }
+      }
+    });
+    btn.setAttribute('data-state', expand ? 'open' : 'closed');
+    btn.textContent = expand ? '모두 접기' : '모두 펼치기';
+  });
+
+  // === 복사 버튼 (이벤트 위임) ===
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest('.copy-btn');
+    if (!btn) return;
+    var block = btn.closest('.code-block');
+    if (!block) return;
+    var text = block.textContent.replace(btn.textContent, '').trim();
+    navigator.clipboard.writeText(text).then(function() {
+      var orig = btn.textContent;
+      btn.textContent = '복사됨';
+      setTimeout(function() { btn.textContent = orig; }, 1500);
+    });
+  });
+
+  // === 해시 기반 초기 상태 ===
+  var hash = window.location.hash;
+  if (hash) {
+    var target = document.getElementById(hash.slice(1));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+      // 해당 요소가 접힌 아코디언 안에 있으면 펼침
+      var parent = target.closest('.collapsible-body');
+      if (parent && parent.hidden) {
+        parent.hidden = false;
+        var prevHeader = parent.previousElementSibling;
+        if (prevHeader) prevHeader.classList.add('open');
+      }
+    }
+  }
+})();
+
+
+</script>
+</body>
+</html>

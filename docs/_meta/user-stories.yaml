@@ -1,0 +1,313 @@
+product_name: "FloatMe"
+page_title: "User Stories"
+version: "v0.1"
+doc_type_label: "User Stories"
+html_rel_path: ""
+extra_css:
+  - story.css
+mermaid_start_on_load: false
+template: "base"
+output_filename: "user-stories.html"
+toc_items: |
+  <li><a href="#feat-add">앱 추가</a></li>
+  <li><a href="#feat-switch">앱 전환</a></li>
+  <li><a href="#feat-remove">앱 제거</a></li>
+  <li><a href="#feat-move">플로팅 바 이동</a></li>
+  <li><a href="#feat-lifecycle">앱 생명주기</a></li>
+  <li><a href="#feat-settings">설정 관리</a></li>
+content: |
+  <div class="section-header">
+    <h1>FloatMe User Stories</h1>
+    <p>v0.1 · 2026-04-17</p>
+  </div>
+
+  <div class="story-dashboard" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(120px, 1fr)); gap:12px; margin:16px 0;">
+    <div style="border:1px solid var(--border-color); border-radius:8px; padding:14px; text-align:center; background:var(--bg-card);">
+      <div style="font-size:1.5rem; font-weight:700; color:var(--primary-color);">6</div>
+      <div style="font-size:0.8rem; color:var(--text-light);">기능</div>
+    </div>
+    <div style="border:1px solid var(--border-color); border-radius:8px; padding:14px; text-align:center; background:var(--bg-card);">
+      <div style="font-size:1.5rem; font-weight:700; color:#4caf50;">24</div>
+      <div style="font-size:0.8rem; color:var(--text-light);">시나리오</div>
+    </div>
+  </div>
+
+  <div style="display:flex; gap:8px; margin:16px 0;">
+    <button class="toggle-all-btn" data-state="closed" style="padding:6px 16px; border:1px solid var(--border-color); border-radius:6px; background:var(--bg-card); cursor:pointer;">모두 펼치기</button>
+  </div>
+
+  <!-- ===== 기능 1: 앱 추가 ===== -->
+  <div class="story-feature" id="feat-add" style="border:1px solid var(--border-color); border-radius:8px; margin:16px 0; overflow:hidden;">
+    <div class="collapsible-header" style="padding:16px 20px; background:var(--bg-card); cursor:pointer; display:flex; justify-content:space-between; align-items:center;">
+      <h2 style="margin:0; font-size:1.05rem;">기능: 플로팅 바에 앱 추가</h2>
+      <span style="font-size:0.8rem; color:var(--text-light);">5 시나리오</span>
+    </div>
+    <div class="collapsible-body" hidden style="padding:20px; border-top:1px solid var(--border-color);">
+      <div class="story-background" style="background:#f8f9fa; border-radius:6px; padding:12px 16px; margin-bottom:16px; font-size:0.9rem;">
+        <strong>배경:</strong> FloatMe가 실행 중이고 플로팅 바가 화면에 표시되어 있다.
+      </div>
+
+      <div class="story-scenario" style="margin:12px 0; padding:12px 16px; border-left:3px solid var(--primary-color); background:var(--bg-card); border-radius:0 6px 6px 0;">
+        <div class="story-scenario-title" style="font-weight:600; margin-bottom:8px;">시나리오 1: + 버튼으로 실행 중인 앱을 플로팅에 추가</div>
+        <ul class="story-steps" style="list-style:none; padding:0; margin:0; font-size:0.9rem;">
+          <li class="step-given" style="padding:4px 0;"><span style="color:#8bc34a; font-weight:600;">만일</span> 사용자가 플로팅 바의 + 버튼을 클릭하면</li>
+          <li class="step-then" style="padding:4px 0;"><span style="color:#2196f3; font-weight:600;">그러면</span> 현재 실행 중인 앱 목록이 팝업으로 표시된다</li>
+          <li class="step-and" style="padding:4px 0;"><span style="color:#9e9e9e; font-weight:600;">그리고</span> 이미 플로팅에 등록된 앱은 체크마크로 구분된다</li>
+          <li class="step-and" style="padding:4px 0;"><span style="color:#9e9e9e; font-weight:600;">그리고</span> 미등록 앱을 클릭하면 즉시 플로팅 바에 아이콘이 추가된다</li>
+        </ul>
+      </div>
+
+      <div class="story-scenario" style="margin:12px 0; padding:12px 16px; border-left:3px solid var(--primary-color); background:var(--bg-card); border-radius:0 6px 6px 0;">
+        <div class="story-scenario-title" style="font-weight:600; margin-bottom:8px;">시나리오 2: 검색으로 앱 필터링하여 추가</div>
+        <ul class="story-steps" style="list-style:none; padding:0; margin:0; font-size:0.9rem;">
+          <li class="step-given" style="padding:4px 0;"><span style="color:#8bc34a; font-weight:600;">만일</span> 앱 선택 팝업이 열린 상태에서</li>
+          <li class="step-and" style="padding:4px 0;"><span style="color:#9e9e9e; font-weight:600;">그리고</span> 사용자가 검색 필드에 "Xco"를 입력하면</li>
+          <li class="step-then" style="padding:4px 0;"><span style="color:#2196f3; font-weight:600;">그러면</span> "Xcode"가 포함된 앱만 필터링되어 표시된다</li>
+        </ul>
+      </div>
+
+      <div class="story-scenario" style="margin:12px 0; padding:12px 16px; border-left:3px solid #f44336; background:#fff5f5; border-radius:0 6px 6px 0;">
+        <div class="story-scenario-title" style="font-weight:600; margin-bottom:8px;">시나리오 3: 이미 추가된 앱을 다시 추가 시도 (엣지 케이스)</div>
+        <ul class="story-steps" style="list-style:none; padding:0; margin:0; font-size:0.9rem;">
+          <li class="step-given" style="padding:4px 0;"><span style="color:#8bc34a; font-weight:600;">만일</span> Xcode가 이미 플로팅에 등록된 상태에서</li>
+          <li class="step-and" style="padding:4px 0;"><span style="color:#9e9e9e; font-weight:600;">그리고</span> 사용자가 팝업에서 Xcode를 클릭하면</li>
+          <li class="step-then" style="padding:4px 0;"><span style="color:#2196f3; font-weight:600;">그러면</span> Xcode가 플로팅에서 제거된다 (토글 동작)</li>
+        </ul>
+      </div>
+
+      <div class="story-scenario" style="margin:12px 0; padding:12px 16px; border-left:3px solid #f44336; background:#fff5f5; border-radius:0 6px 6px 0;">
+        <div class="story-scenario-title" style="font-weight:600; margin-bottom:8px;">시나리오 4: 최대 개수 초과 시 경고</div>
+        <ul class="story-steps" style="list-style:none; padding:0; margin:0; font-size:0.9rem;">
+          <li class="step-given" style="padding:4px 0;"><span style="color:#8bc34a; font-weight:600;">만일</span> 이미 15개 앱이 플로팅에 등록된 상태에서</li>
+          <li class="step-and" style="padding:4px 0;"><span style="color:#9e9e9e; font-weight:600;">그리고</span> 사용자가 추가 앱을 등록하려 하면</li>
+          <li class="step-then" style="padding:4px 0;"><span style="color:#2196f3; font-weight:600;">그러면</span> "플로팅 바가 너무 길어질 수 있습니다" 경고가 표시된다</li>
+          <li class="step-but" style="padding:4px 0;"><span style="color:#ff9800; font-weight:600;">하지만</span> 사용자가 확인하면 추가가 허용된다</li>
+        </ul>
+      </div>
+
+      <div class="story-scenario" style="margin:12px 0; padding:12px 16px; border-left:3px solid #f44336; background:#fff5f5; border-radius:0 6px 6px 0;">
+        <div class="story-scenario-title" style="font-weight:600; margin-bottom:8px;">시나리오 5: 실행 중인 앱이 없을 때 (빈 상태)</div>
+        <ul class="story-steps" style="list-style:none; padding:0; margin:0; font-size:0.9rem;">
+          <li class="step-given" style="padding:4px 0;"><span style="color:#8bc34a; font-weight:600;">만일</span> Finder 외에 실행 중인 앱이 없는 상태에서</li>
+          <li class="step-and" style="padding:4px 0;"><span style="color:#9e9e9e; font-weight:600;">그리고</span> + 버튼을 클릭하면</li>
+          <li class="step-then" style="padding:4px 0;"><span style="color:#2196f3; font-weight:600;">그러면</span> Finder만 표시되는 팝업이 나타난다</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 기능 2: 앱 전환 ===== -->
+  <div class="story-feature" id="feat-switch" style="border:1px solid var(--border-color); border-radius:8px; margin:16px 0; overflow:hidden;">
+    <div class="collapsible-header" style="padding:16px 20px; background:var(--bg-card); cursor:pointer; display:flex; justify-content:space-between; align-items:center;">
+      <h2 style="margin:0; font-size:1.05rem;">기능: 앱 전환 (클릭)</h2>
+      <span style="font-size:0.8rem; color:var(--text-light);">4 시나리오</span>
+    </div>
+    <div class="collapsible-body" hidden style="padding:20px; border-top:1px solid var(--border-color);">
+      <div class="story-background" style="background:#f8f9fa; border-radius:6px; padding:12px 16px; margin-bottom:16px; font-size:0.9rem;">
+        <strong>배경:</strong> 플로팅 바에 Xcode, Safari, Slack이 등록되어 있고 현재 Safari가 활성 상태이다.
+      </div>
+
+      <div class="story-scenario" style="margin:12px 0; padding:12px 16px; border-left:3px solid var(--primary-color); background:var(--bg-card); border-radius:0 6px 6px 0;">
+        <div class="story-scenario-title" style="font-weight:600; margin-bottom:8px;">시나리오 1: 정상 앱 전환</div>
+        <ul class="story-steps" style="list-style:none; padding:0; margin:0; font-size:0.9rem;">
+          <li class="step-given" style="padding:4px 0;"><span style="color:#8bc34a; font-weight:600;">만일</span> 사용자가 Xcode 아이콘을 클릭하면</li>
+          <li class="step-then" style="padding:4px 0;"><span style="color:#2196f3; font-weight:600;">그러면</span> Xcode의 모든 윈도우가 최상단으로 올라온다</li>
+          <li class="step-and" style="padding:4px 0;"><span style="color:#9e9e9e; font-weight:600;">그리고</span> Xcode 아이콘에 활성 하이라이트가 표시된다</li>
+          <li class="step-and" style="padding:4px 0;"><span style="color:#9e9e9e; font-weight:600;">그리고</span> Safari 아이콘의 활성 하이라이트가 해제된다</li>
+        </ul>
+      </div>
+
+      <div class="story-scenario" style="margin:12px 0; padding:12px 16px; border-left:3px solid var(--primary-color); background:var(--bg-card); border-radius:0 6px 6px 0;">
+        <div class="story-scenario-title" style="font-weight:600; margin-bottom:8px;">시나리오 2: 이미 활성인 앱을 클릭</div>
+        <ul class="story-steps" style="list-style:none; padding:0; margin:0; font-size:0.9rem;">
+          <li class="step-given" style="padding:4px 0;"><span style="color:#8bc34a; font-weight:600;">만일</span> Safari가 이미 활성 상태에서 Safari 아이콘을 클릭하면</li>
+          <li class="step-then" style="padding:4px 0;"><span style="color:#2196f3; font-weight:600;">그러면</span> Safari의 모든 윈도우가 다시 최상단으로 정렬된다</li>
+        </ul>
+      </div>
+
+      <div class="story-scenario" style="margin:12px 0; padding:12px 16px; border-left:3px solid #f44336; background:#fff5f5; border-radius:0 6px 6px 0;">
+        <div class="story-scenario-title" style="font-weight:600; margin-bottom:8px;">시나리오 3: 종료된 앱 아이콘 클릭 (에러)</div>
+        <ul class="story-steps" style="list-style:none; padding:0; margin:0; font-size:0.9rem;">
+          <li class="step-given" style="padding:4px 0;"><span style="color:#8bc34a; font-weight:600;">만일</span> Xcode가 종료되었는데 플로팅에 아직 잔존하는 상태에서</li>
+          <li class="step-and" style="padding:4px 0;"><span style="color:#9e9e9e; font-weight:600;">그리고</span> 사용자가 Xcode 아이콘을 클릭하면</li>
+          <li class="step-then" style="padding:4px 0;"><span style="color:#2196f3; font-weight:600;">그러면</span> Xcode를 실행하려고 시도한다 (NSWorkspace.open)</li>
+        </ul>
+      </div>
+
+      <div class="story-scenario" style="margin:12px 0; padding:12px 16px; border-left:3px solid #ff9800; background:#fff8e1; border-radius:0 6px 6px 0;">
+        <div class="story-scenario-title" style="font-weight:600; margin-bottom:8px;">시나리오 4: 연속 빠른 클릭 (더블 클릭 방지)</div>
+        <ul class="story-steps" style="list-style:none; padding:0; margin:0; font-size:0.9rem;">
+          <li class="step-given" style="padding:4px 0;"><span style="color:#8bc34a; font-weight:600;">만일</span> 사용자가 Xcode 아이콘을 200ms 이내에 두 번 클릭하면</li>
+          <li class="step-then" style="padding:4px 0;"><span style="color:#2196f3; font-weight:600;">그러면</span> 앱 전환은 한 번만 수행된다 (디바운스)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 기능 3: 앱 제거 ===== -->
+  <div class="story-feature" id="feat-remove" style="border:1px solid var(--border-color); border-radius:8px; margin:16px 0; overflow:hidden;">
+    <div class="collapsible-header" style="padding:16px 20px; background:var(--bg-card); cursor:pointer; display:flex; justify-content:space-between; align-items:center;">
+      <h2 style="margin:0; font-size:1.05rem;">기능: 플로팅에서 앱 제거</h2>
+      <span style="font-size:0.8rem; color:var(--text-light);">3 시나리오</span>
+    </div>
+    <div class="collapsible-body" hidden style="padding:20px; border-top:1px solid var(--border-color);">
+      <div class="story-scenario" style="margin:12px 0; padding:12px 16px; border-left:3px solid var(--primary-color); background:var(--bg-card); border-radius:0 6px 6px 0;">
+        <div class="story-scenario-title" style="font-weight:600; margin-bottom:8px;">시나리오 1: 우클릭 메뉴로 제거</div>
+        <ul class="story-steps" style="list-style:none; padding:0; margin:0; font-size:0.9rem;">
+          <li class="step-given" style="padding:4px 0;"><span style="color:#8bc34a; font-weight:600;">만일</span> 사용자가 앱 아이콘을 우클릭하면</li>
+          <li class="step-then" style="padding:4px 0;"><span style="color:#2196f3; font-weight:600;">그러면</span> 컨텍스트 메뉴가 표시된다</li>
+          <li class="step-and" style="padding:4px 0;"><span style="color:#9e9e9e; font-weight:600;">그리고</span> "플로팅에서 제거"를 클릭하면 아이콘이 즉시 사라진다</li>
+          <li class="step-and" style="padding:4px 0;"><span style="color:#9e9e9e; font-weight:600;">그리고</span> 나머지 아이콘이 빈 자리를 채우도록 재정렬된다</li>
+        </ul>
+      </div>
+
+      <div class="story-scenario" style="margin:12px 0; padding:12px 16px; border-left:3px solid var(--primary-color); background:var(--bg-card); border-radius:0 6px 6px 0;">
+        <div class="story-scenario-title" style="font-weight:600; margin-bottom:8px;">시나리오 2: Option+클릭으로 빠른 제거</div>
+        <ul class="story-steps" style="list-style:none; padding:0; margin:0; font-size:0.9rem;">
+          <li class="step-given" style="padding:4px 0;"><span style="color:#8bc34a; font-weight:600;">만일</span> 사용자가 Option 키를 누른 채 앱 아이콘을 클릭하면</li>
+          <li class="step-then" style="padding:4px 0;"><span style="color:#2196f3; font-weight:600;">그러면</span> 확인 없이 즉시 플로팅에서 제거된다</li>
+        </ul>
+      </div>
+
+      <div class="story-scenario" style="margin:12px 0; padding:12px 16px; border-left:3px solid #f44336; background:#fff5f5; border-radius:0 6px 6px 0;">
+        <div class="story-scenario-title" style="font-weight:600; margin-bottom:8px;">시나리오 3: 마지막 앱 제거 시 빈 상태</div>
+        <ul class="story-steps" style="list-style:none; padding:0; margin:0; font-size:0.9rem;">
+          <li class="step-given" style="padding:4px 0;"><span style="color:#8bc34a; font-weight:600;">만일</span> 플로팅에 앱이 1개만 남은 상태에서 제거하면</li>
+          <li class="step-then" style="padding:4px 0;"><span style="color:#2196f3; font-weight:600;">그러면</span> + 버튼만 남은 최소 크기의 플로팅 바가 표시된다</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 기능 4: 플로팅 바 이동 ===== -->
+  <div class="story-feature" id="feat-move" style="border:1px solid var(--border-color); border-radius:8px; margin:16px 0; overflow:hidden;">
+    <div class="collapsible-header" style="padding:16px 20px; background:var(--bg-card); cursor:pointer; display:flex; justify-content:space-between; align-items:center;">
+      <h2 style="margin:0; font-size:1.05rem;">기능: 플로팅 바 이동</h2>
+      <span style="font-size:0.8rem; color:var(--text-light);">4 시나리오</span>
+    </div>
+    <div class="collapsible-body" hidden style="padding:20px; border-top:1px solid var(--border-color);">
+      <div class="story-scenario" style="margin:12px 0; padding:12px 16px; border-left:3px solid var(--primary-color); background:var(--bg-card); border-radius:0 6px 6px 0;">
+        <div class="story-scenario-title" style="font-weight:600; margin-bottom:8px;">시나리오 1: Cmd+드래그로 이동</div>
+        <ul class="story-steps" style="list-style:none; padding:0; margin:0; font-size:0.9rem;">
+          <li class="step-given" style="padding:4px 0;"><span style="color:#8bc34a; font-weight:600;">만일</span> 사용자가 Cmd 키를 누른 상태에서 아이콘을 드래그하면</li>
+          <li class="step-then" style="padding:4px 0;"><span style="color:#2196f3; font-weight:600;">그러면</span> 플로팅 바 전체가 마우스를 따라 이동한다</li>
+          <li class="step-and" style="padding:4px 0;"><span style="color:#9e9e9e; font-weight:600;">그리고</span> 드래그 종료 시 새 위치가 UserDefaults에 저장된다</li>
+        </ul>
+      </div>
+
+      <div class="story-scenario" style="margin:12px 0; padding:12px 16px; border-left:3px solid var(--primary-color); background:var(--bg-card); border-radius:0 6px 6px 0;">
+        <div class="story-scenario-title" style="font-weight:600; margin-bottom:8px;">시나리오 2: Cmd 없이 클릭은 앱 전환</div>
+        <ul class="story-steps" style="list-style:none; padding:0; margin:0; font-size:0.9rem;">
+          <li class="step-given" style="padding:4px 0;"><span style="color:#8bc34a; font-weight:600;">만일</span> 사용자가 Cmd 키 없이 아이콘을 클릭하면</li>
+          <li class="step-then" style="padding:4px 0;"><span style="color:#2196f3; font-weight:600;">그러면</span> 이동이 아닌 앱 전환이 수행된다</li>
+        </ul>
+      </div>
+
+      <div class="story-scenario" style="margin:12px 0; padding:12px 16px; border-left:3px solid #f44336; background:#fff5f5; border-radius:0 6px 6px 0;">
+        <div class="story-scenario-title" style="font-weight:600; margin-bottom:8px;">시나리오 3: 화면 밖으로 이동 시도 (경계 처리)</div>
+        <ul class="story-steps" style="list-style:none; padding:0; margin:0; font-size:0.9rem;">
+          <li class="step-given" style="padding:4px 0;"><span style="color:#8bc34a; font-weight:600;">만일</span> 사용자가 플로팅 바를 화면 경계 밖으로 드래그하면</li>
+          <li class="step-then" style="padding:4px 0;"><span style="color:#2196f3; font-weight:600;">그러면</span> 플로팅 바가 화면 경계에 걸려 멈춘다 (최소 절반은 화면 안)</li>
+        </ul>
+      </div>
+
+      <div class="story-scenario" style="margin:12px 0; padding:12px 16px; border-left:3px solid #ff9800; background:#fff8e1; border-radius:0 6px 6px 0;">
+        <div class="story-scenario-title" style="font-weight:600; margin-bottom:8px;">시나리오 4: 드래그 중 Cmd 키 해제</div>
+        <ul class="story-steps" style="list-style:none; padding:0; margin:0; font-size:0.9rem;">
+          <li class="step-given" style="padding:4px 0;"><span style="color:#8bc34a; font-weight:600;">만일</span> 드래그 중에 Cmd 키를 먼저 놓으면</li>
+          <li class="step-then" style="padding:4px 0;"><span style="color:#2196f3; font-weight:600;">그러면</span> 드래그가 즉시 종료되고 현재 위치에 고정된다</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 기능 5: 앱 생명주기 ===== -->
+  <div class="story-feature" id="feat-lifecycle" style="border:1px solid var(--border-color); border-radius:8px; margin:16px 0; overflow:hidden;">
+    <div class="collapsible-header" style="padding:16px 20px; background:var(--bg-card); cursor:pointer; display:flex; justify-content:space-between; align-items:center;">
+      <h2 style="margin:0; font-size:1.05rem;">기능: 앱 실행/종료 감지</h2>
+      <span style="font-size:0.8rem; color:var(--text-light);">4 시나리오</span>
+    </div>
+    <div class="collapsible-body" hidden style="padding:20px; border-top:1px solid var(--border-color);">
+      <div class="story-scenario" style="margin:12px 0; padding:12px 16px; border-left:3px solid var(--primary-color); background:var(--bg-card); border-radius:0 6px 6px 0;">
+        <div class="story-scenario-title" style="font-weight:600; margin-bottom:8px;">시나리오 1: 등록된 앱이 종료될 때 (자동 제거 ON)</div>
+        <ul class="story-steps" style="list-style:none; padding:0; margin:0; font-size:0.9rem;">
+          <li class="step-given" style="padding:4px 0;"><span style="color:#8bc34a; font-weight:600;">만일</span> "종료된 앱 자동 제거" 설정이 켜져 있고</li>
+          <li class="step-and" style="padding:4px 0;"><span style="color:#9e9e9e; font-weight:600;">그리고</span> 플로팅에 등록된 Xcode가 종료되면</li>
+          <li class="step-then" style="padding:4px 0;"><span style="color:#2196f3; font-weight:600;">그러면</span> Xcode 아이콘이 플로팅 바에서 자동 제거된다</li>
+        </ul>
+      </div>
+
+      <div class="story-scenario" style="margin:12px 0; padding:12px 16px; border-left:3px solid var(--primary-color); background:var(--bg-card); border-radius:0 6px 6px 0;">
+        <div class="story-scenario-title" style="font-weight:600; margin-bottom:8px;">시나리오 2: 등록된 앱이 종료될 때 (자동 제거 OFF)</div>
+        <ul class="story-steps" style="list-style:none; padding:0; margin:0; font-size:0.9rem;">
+          <li class="step-given" style="padding:4px 0;"><span style="color:#8bc34a; font-weight:600;">만일</span> "종료된 앱 자동 제거" 설정이 꺼져 있고</li>
+          <li class="step-and" style="padding:4px 0;"><span style="color:#9e9e9e; font-weight:600;">그리고</span> 플로팅에 등록된 Xcode가 종료되면</li>
+          <li class="step-then" style="padding:4px 0;"><span style="color:#2196f3; font-weight:600;">그러면</span> Xcode 아이콘이 50% 투명도로 흐리게 표시된다</li>
+          <li class="step-and" style="padding:4px 0;"><span style="color:#9e9e9e; font-weight:600;">그리고</span> 클릭 시 Xcode 재실행을 시도한다</li>
+        </ul>
+      </div>
+
+      <div class="story-scenario" style="margin:12px 0; padding:12px 16px; border-left:3px solid var(--primary-color); background:var(--bg-card); border-radius:0 6px 6px 0;">
+        <div class="story-scenario-title" style="font-weight:600; margin-bottom:8px;">시나리오 3: 앱 재시작 후 설정 복원</div>
+        <ul class="story-steps" style="list-style:none; padding:0; margin:0; font-size:0.9rem;">
+          <li class="step-given" style="padding:4px 0;"><span style="color:#8bc34a; font-weight:600;">만일</span> FloatMe를 재시작하면</li>
+          <li class="step-then" style="padding:4px 0;"><span style="color:#2196f3; font-weight:600;">그러면</span> 이전에 저장된 앱 목록, 위치, 설정이 복원된다</li>
+          <li class="step-and" style="padding:4px 0;"><span style="color:#9e9e9e; font-weight:600;">그리고</span> 현재 실행 중인 앱만 활성 상태로 표시된다</li>
+        </ul>
+      </div>
+
+      <div class="story-scenario" style="margin:12px 0; padding:12px 16px; border-left:3px solid #ff9800; background:#fff8e1; border-radius:0 6px 6px 0;">
+        <div class="story-scenario-title" style="font-weight:600; margin-bottom:8px;">시나리오 4: 다른 앱에서 앱 전환 시 활성 표시 갱신</div>
+        <ul class="story-steps" style="list-style:none; padding:0; margin:0; font-size:0.9rem;">
+          <li class="step-given" style="padding:4px 0;"><span style="color:#8bc34a; font-weight:600;">만일</span> 사용자가 Cmd+Tab이나 Dock으로 앱을 전환하면</li>
+          <li class="step-then" style="padding:4px 0;"><span style="color:#2196f3; font-weight:600;">그러면</span> 플로팅 바의 활성 하이라이트가 새로 포커스된 앱으로 즉시 이동한다</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 기능 6: 설정 관리 ===== -->
+  <div class="story-feature" id="feat-settings" style="border:1px solid var(--border-color); border-radius:8px; margin:16px 0; overflow:hidden;">
+    <div class="collapsible-header" style="padding:16px 20px; background:var(--bg-card); cursor:pointer; display:flex; justify-content:space-between; align-items:center;">
+      <h2 style="margin:0; font-size:1.05rem;">기능: 설정 관리</h2>
+      <span style="font-size:0.8rem; color:var(--text-light);">4 시나리오</span>
+    </div>
+    <div class="collapsible-body" hidden style="padding:20px; border-top:1px solid var(--border-color);">
+      <div class="story-scenario" style="margin:12px 0; padding:12px 16px; border-left:3px solid var(--primary-color); background:var(--bg-card); border-radius:0 6px 6px 0;">
+        <div class="story-scenario-title" style="font-weight:600; margin-bottom:8px;">시나리오 1: 레이아웃 방향 전환</div>
+        <ul class="story-steps" style="list-style:none; padding:0; margin:0; font-size:0.9rem;">
+          <li class="step-given" style="padding:4px 0;"><span style="color:#8bc34a; font-weight:600;">만일</span> 메뉴바에서 "방향" 항목을 클릭하면</li>
+          <li class="step-then" style="padding:4px 0;"><span style="color:#2196f3; font-weight:600;">그러면</span> 가로 ↔ 세로가 즉시 전환된다</li>
+          <li class="step-and" style="padding:4px 0;"><span style="color:#9e9e9e; font-weight:600;">그리고</span> 전환 애니메이션이 부드럽게 적용된다</li>
+        </ul>
+      </div>
+
+      <div class="story-scenario" style="margin:12px 0; padding:12px 16px; border-left:3px solid var(--primary-color); background:var(--bg-card); border-radius:0 6px 6px 0;">
+        <div class="story-scenario-title" style="font-weight:600; margin-bottom:8px;">시나리오 2: 아이콘 크기 조절</div>
+        <ul class="story-steps" style="list-style:none; padding:0; margin:0; font-size:0.9rem;">
+          <li class="step-given" style="padding:4px 0;"><span style="color:#8bc34a; font-weight:600;">만일</span> 환경설정에서 아이콘 크기 슬라이더를 조절하면</li>
+          <li class="step-then" style="padding:4px 0;"><span style="color:#2196f3; font-weight:600;">그러면</span> 플로팅 바의 아이콘 크기가 실시간으로 변경된다</li>
+          <li class="step-and" style="padding:4px 0;"><span style="color:#9e9e9e; font-weight:600;">그리고</span> 24px ~ 48px 범위 내에서 조절 가능하다</li>
+        </ul>
+      </div>
+
+      <div class="story-scenario" style="margin:12px 0; padding:12px 16px; border-left:3px solid var(--primary-color); background:var(--bg-card); border-radius:0 6px 6px 0;">
+        <div class="story-scenario-title" style="font-weight:600; margin-bottom:8px;">시나리오 3: 플로팅 바 표시/숨김 토글</div>
+        <ul class="story-steps" style="list-style:none; padding:0; margin:0; font-size:0.9rem;">
+          <li class="step-given" style="padding:4px 0;"><span style="color:#8bc34a; font-weight:600;">만일</span> 메뉴바에서 "플로팅 바 표시"를 토글하면</li>
+          <li class="step-then" style="padding:4px 0;"><span style="color:#2196f3; font-weight:600;">그러면</span> 플로팅 바가 표시되거나 숨겨진다</li>
+          <li class="step-and" style="padding:4px 0;"><span style="color:#9e9e9e; font-weight:600;">그리고</span> Cmd+Shift+F 단축키로도 동일하게 토글 가능하다</li>
+        </ul>
+      </div>
+
+      <div class="story-scenario" style="margin:12px 0; padding:12px 16px; border-left:3px solid #f44336; background:#fff5f5; border-radius:0 6px 6px 0;">
+        <div class="story-scenario-title" style="font-weight:600; margin-bottom:8px;">시나리오 4: 전체화면 진입 시 자동 숨김</div>
+        <ul class="story-steps" style="list-style:none; padding:0; margin:0; font-size:0.9rem;">
+          <li class="step-given" style="padding:4px 0;"><span style="color:#8bc34a; font-weight:600;">만일</span> "전체화면에서 숨기기" 설정이 켜져 있고</li>
+          <li class="step-and" style="padding:4px 0;"><span style="color:#9e9e9e; font-weight:600;">그리고</span> 사용자가 앱을 전체화면으로 전환하면</li>
+          <li class="step-then" style="padding:4px 0;"><span style="color:#2196f3; font-weight:600;">그러면</span> 플로팅 바가 자동으로 숨겨진다</li>
+          <li class="step-and" style="padding:4px 0;"><span style="color:#9e9e9e; font-weight:600;">그리고</span> 전체화면을 나가면 다시 표시된다</li>
+        </ul>
+      </div>
+    </div>
+  </div>

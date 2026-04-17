@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1. 플로팅 바 — FloatMe</title>
+<link rel="stylesheet" href="../../styles/common.css">
+    <link rel="stylesheet" href="../../styles/wireframe.css">
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({ startOnLoad: false, theme: 'default', securityLevel: 'loose' });</script>
+</head>
+<body>
+<div class="page-wrapper">
+<nav class="sidebar" id="sidebar">
+<div class="sidebar-title"><a href="../../index.html">FloatMe</a></div>
+<div class="sidebar-section-label">Wireframe v0.1</div>
+<ul class="sidebar-menu">
+<li><a href="../../index.html" class="sidebar-home-link">Home</a></li>
+<li class="sidebar-divider"></li>
+<li><a href="01-floating-bar.html" class="section-link active">1. 플로팅 바</a></li>
+<li><a href="#horizontal" class="sub-link">1.1 가로 레이아웃</a></li>
+<li><a href="#vertical" class="sub-link">1.2 세로 레이아웃</a></li>
+<li><a href="#edit-mode" class="sub-link">1.3 편집 모드</a></li>
+<li><a href="#context-menu" class="sub-link">1.4 컨텍스트 메뉴</a></li>
+<li class="sidebar-divider"></li>
+<li><a href="02-app-selector.html" class="section-link">2. 앱 선택 팝업</a></li>
+<li><a href="03-settings.html" class="section-link">3. 설정</a></li>
+
+</ul>
+</nav>
+<button class="sidebar-toggle" aria-label="메뉴 열기">&#9776;</button>
+<main class="main-content">
+<div class="section-header">
+  <h1>1. 플로팅 바 (Floating Bar)</h1>
+  <p>FloatMe — v0.1 — 2026-04-17</p>
+</div>
+
+<!-- ===== 1.1 가로 레이아웃 ===== -->
+<div class="screen-block" id="horizontal">
+  <h2>1.1 가로 레이아웃 (Horizontal) — 일반 모드</h2>
+  <table class="screen-meta">
+    <tr><th>시스템</th><td>FloatMe</td><th>화면구분</th><td>Floating</td></tr>
+    <tr><th>URL</th><td>N/A (네이티브 윈도우)</td><th>화면 ID</th><td>FM-FL-01-001</td></tr>
+  </table>
+
+  <div class="spec-row">
+    <div class="wf-area">
+      <div class="wf" style="background:#f5f5f7; border-radius:12px; padding:8px 12px; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 12px rgba(0,0,0,0.15); position:relative;">
+        <span class="ind" style="position:absolute; top:-10px; left:-10px;">1</span>
+        <!-- 앱 아이콘들 -->
+        <div style="position:relative; text-align:center;">
+          <span class="ind" style="position:absolute; top:-10px; left:-10px;">2</span>
+          <div style="width:36px; height:36px; border-radius:8px; background:linear-gradient(135deg,#5856d6,#af52de); display:flex; align-items:center; justify-content:center; color:white; font-size:11px; font-weight:700; cursor:pointer;">Xc</div>
+          <div style="width:5px; height:5px; border-radius:50%; background:#007aff; margin:3px auto 0;"></div>
+        </div>
+        <div style="text-align:center;">
+          <div style="width:36px; height:36px; border-radius:8px; background:linear-gradient(135deg,#30b0c7,#34aadc); display:flex; align-items:center; justify-content:center; color:white; font-size:11px; font-weight:700; cursor:pointer;">Sa</div>
+          <div style="width:5px; height:5px; border-radius:50%; background:#007aff; margin:3px auto 0;"></div>
+        </div>
+        <div style="text-align:center;">
+          <div style="width:36px; height:36px; border-radius:8px; background:linear-gradient(135deg,#ff6b35,#ff9500); display:flex; align-items:center; justify-content:center; color:white; font-size:11px; font-weight:700; cursor:pointer;">Fi</div>
+          <div style="width:5px; height:5px; border-radius:50%; background:#007aff; margin:3px auto 0;"></div>
+        </div>
+        <div style="position:relative; text-align:center;">
+          <span class="ind" style="position:absolute; top:-10px; left:-10px;">3</span>
+          <div style="width:36px; height:36px; border-radius:8px; background:linear-gradient(135deg,#4cd964,#5ac8fa); display:flex; align-items:center; justify-content:center; color:white; font-size:11px; font-weight:700; cursor:pointer; box-shadow:0 0 0 2px #007aff;">Sl</div>
+          <div style="width:5px; height:5px; border-radius:50%; background:#007aff; margin:3px auto 0;"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="desc-area">
+      <table class="desc-table">
+        <thead><tr><th style="width:40px;">No</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><strong>플로팅 바 컨테이너</strong> — 블러 배경(NSVisualEffectView, 기본) 또는 사용자 선택 스타일. 라운드 코너, 드롭 쉐도우. Cmd+드래그로 전체 이동. 화면 가장자리 스냅(20px). 앱 수 증가 시 아이콘 자동 축소(최소 20px).</td></tr>
+          <tr><td>2</td><td><strong>앱 아이콘 + 실행 도트</strong> — 실제 앱 아이콘(NSImage) 표시. 하단에 파란 도트로 실행 중 표시. 마우스 호버 시 앱 이름 툴팁. 클릭 시 해당 앱의 모든 윈도우 활성화. Option+클릭 시 즉시 제거.</td></tr>
+          <tr><td>3</td><td><strong>현재 포커스 앱 하이라이트</strong> — 현재 최전면 앱에 파란 테두리(2px ring). didActivateApplication 알림으로 실시간 갱신. 도트와 테두리 병행 표시.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 1.2 세로 레이아웃 ===== -->
+<div class="screen-block" id="vertical">
+  <h2>1.2 세로 레이아웃 (Vertical)</h2>
+  <table class="screen-meta">
+    <tr><th>시스템</th><td>FloatMe</td><th>화면구분</th><td>Floating</td></tr>
+    <tr><th>URL</th><td>N/A</td><th>화면 ID</th><td>FM-FL-01-002</td></tr>
+  </table>
+
+  <div class="spec-row">
+    <div class="wf-area">
+      <div class="wf" style="background:#f5f5f7; border-radius:12px; padding:12px 8px; display:inline-flex; flex-direction:column; align-items:center; gap:6px; box-shadow:0 2px 12px rgba(0,0,0,0.15); position:relative;">
+        <span class="ind" style="position:absolute; top:-10px; left:-10px;">1</span>
+        <div style="position:relative; display:flex; align-items:center; gap:4px;">
+          <div style="width:36px; height:36px; border-radius:8px; background:linear-gradient(135deg,#5856d6,#af52de); display:flex; align-items:center; justify-content:center; color:white; font-size:11px; font-weight:700;">Xc</div>
+          <div style="width:5px; height:5px; border-radius:50%; background:#007aff;"></div>
+        </div>
+        <div style="display:flex; align-items:center; gap:4px;">
+          <div style="width:36px; height:36px; border-radius:8px; background:linear-gradient(135deg,#30b0c7,#34aadc); display:flex; align-items:center; justify-content:center; color:white; font-size:11px; font-weight:700; box-shadow:0 0 0 2px #007aff;">Sa</div>
+          <div style="width:5px; height:5px; border-radius:50%; background:#007aff;"></div>
+        </div>
+        <div style="display:flex; align-items:center; gap:4px;">
+          <div style="width:36px; height:36px; border-radius:8px; background:linear-gradient(135deg,#ff6b35,#ff9500); display:flex; align-items:center; justify-content:center; color:white; font-size:11px; font-weight:700;">Fi</div>
+          <div style="width:5px; height:5px; border-radius:50%; background:#007aff;"></div>
+        </div>
+        <div style="display:flex; align-items:center; gap:4px;">
+          <div style="width:36px; height:36px; border-radius:8px; background:linear-gradient(135deg,#4cd964,#5ac8fa); display:flex; align-items:center; justify-content:center; color:white; font-size:11px; font-weight:700;">Sl</div>
+          <div style="width:5px; height:5px; border-radius:50%; background:#007aff;"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="desc-area">
+      <table class="desc-table">
+        <thead><tr><th style="width:40px;">No</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><strong>세로 플로팅 바</strong> — 가로와 동일 기능, 아이콘이 위→아래로 배치. 도트는 우측에 표시. 화면 좌/우 가장자리에 배치 시 유용. 설정에서 방향 전환 가능.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 1.3 편집 모드 ===== -->
+<div class="screen-block" id="edit-mode">
+  <h2>1.3 편집 모드 (Edit Mode)</h2>
+  <table class="screen-meta">
+    <tr><th>시스템</th><td>FloatMe</td><th>화면구분</th><td>Floating (Edit)</td></tr>
+    <tr><th>URL</th><td>N/A</td><th>화면 ID</th><td>FM-FL-01-003</td></tr>
+  </table>
+
+  <div class="spec-row">
+    <div class="wf-area">
+      <div class="wf" style="background:#f5f5f7; border-radius:12px; padding:10px 14px; display:inline-flex; align-items:center; gap:8px; box-shadow:0 2px 16px rgba(0,0,0,0.2); position:relative; border:2px solid rgba(0,122,255,0.3);">
+        <span class="ind" style="position:absolute; top:-12px; left:-12px;">1</span>
+        <!-- 편집 모드 아이콘들 -->
+        <div style="position:relative; transform:rotate(-2deg);">
+          <span class="ind" style="position:absolute; top:-12px; right:-12px;">2</span>
+          <div style="position:absolute; top:-6px; left:-6px; width:16px; height:16px; border-radius:50%; background:#ff3b30; color:white; font-size:10px; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:1; box-shadow:0 1px 3px rgba(0,0,0,0.3);">&times;</div>
+          <div style="width:36px; height:36px; border-radius:8px; background:linear-gradient(135deg,#5856d6,#af52de); display:flex; align-items:center; justify-content:center; color:white; font-size:11px; font-weight:700;">Xc</div>
+        </div>
+        <div style="position:relative; transform:rotate(1.5deg);">
+          <div style="position:absolute; top:-6px; left:-6px; width:16px; height:16px; border-radius:50%; background:#ff3b30; color:white; font-size:10px; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:1; box-shadow:0 1px 3px rgba(0,0,0,0.3);">&times;</div>
+          <div style="width:36px; height:36px; border-radius:8px; background:linear-gradient(135deg,#30b0c7,#34aadc); display:flex; align-items:center; justify-content:center; color:white; font-size:11px; font-weight:700;">Sa</div>
+        </div>
+        <div style="position:relative; transform:rotate(-1deg);">
+          <div style="position:absolute; top:-6px; left:-6px; width:16px; height:16px; border-radius:50%; background:#ff3b30; color:white; font-size:10px; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:1; box-shadow:0 1px 3px rgba(0,0,0,0.3);">&times;</div>
+          <div style="width:36px; height:36px; border-radius:8px; background:linear-gradient(135deg,#ff6b35,#ff9500); display:flex; align-items:center; justify-content:center; color:white; font-size:11px; font-weight:700;">Fi</div>
+        </div>
+        <div style="position:relative; transform:rotate(2deg);">
+          <div style="position:absolute; top:-6px; left:-6px; width:16px; height:16px; border-radius:50%; background:#ff3b30; color:white; font-size:10px; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:1; box-shadow:0 1px 3px rgba(0,0,0,0.3);">&times;</div>
+          <div style="width:36px; height:36px; border-radius:8px; background:linear-gradient(135deg,#4cd964,#5ac8fa); display:flex; align-items:center; justify-content:center; color:white; font-size:11px; font-weight:700;">Sl</div>
+        </div>
+        <!-- + 버튼 -->
+        <div style="position:relative;">
+          <span class="ind" style="position:absolute; top:-12px; right:-12px;">3</span>
+          <div style="width:36px; height:36px; border-radius:8px; background:rgba(0,122,255,0.1); display:flex; align-items:center; justify-content:center; color:#007aff; font-size:20px; cursor:pointer; border:2px dashed #007aff;">+</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="desc-area">
+      <table class="desc-table">
+        <thead><tr><th style="width:40px;">No</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><strong>편집 모드 컨테이너</strong> — 0.5초 길게 누르면 진입. 바 테두리가 파란색으로 변경되어 편집 모드임을 표시. 아이콘이 iOS처럼 미세하게 흔들리는 애니메이션. 바 밖 클릭 또는 ESC로 종료.</td></tr>
+          <tr><td>2</td><td><strong>제거 버튼 (&times;)</strong> — 각 아이콘 좌상단에 빨간 원형 X 버튼 표시. 클릭 시 축소+페이드아웃 애니메이션으로 즉시 제거. 나머지 아이콘 재정렬. 아이콘 드래그로 순서 변경 가능.</td></tr>
+          <tr><td>3</td><td><strong>추가 버튼 (+)</strong> — 편집 모드에서만 나타남. 파란 점선 테두리. 클릭 시 앱 선택 팔레트 표시. 메뉴바나 Cmd+Shift+A로도 팔레트 접근 가능.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 1.4 컨텍스트 메뉴 ===== -->
+<div class="screen-block" id="context-menu">
+  <h2>1.4 컨텍스트 메뉴 (Context Menu)</h2>
+  <table class="screen-meta">
+    <tr><th>시스템</th><td>FloatMe</td><th>화면구분</th><td>Popup</td></tr>
+    <tr><th>URL</th><td>N/A</td><th>화면 ID</th><td>FM-FL-01-004</td></tr>
+  </table>
+
+  <div class="spec-row">
+    <div class="wf-area">
+      <div class="wf" style="position:relative;">
+        <div style="width:36px; height:36px; border-radius:8px; background:linear-gradient(135deg,#5856d6,#af52de); display:flex; align-items:center; justify-content:center; color:white; font-size:11px; font-weight:700; margin-bottom:4px;">Xc</div>
+        <div style="position:relative;">
+          <span class="ind" style="position:absolute; top:-10px; left:-10px;">1</span>
+          <div style="background:white; border-radius:8px; box-shadow:0 4px 20px rgba(0,0,0,0.2); padding:4px 0; width:180px; font-size:13px;">
+            <div style="padding:6px 16px; color:#333;">
+              <strong>Xcode</strong>
+            </div>
+            <div style="border-top:1px solid #eee; margin:2px 0;"></div>
+            <div style="padding:6px 16px; color:#333; cursor:pointer;">
+              <span class="ind" style="position:absolute; right:-10px;">2</span>
+              플로팅에서 제거
+            </div>
+            <div style="padding:6px 16px; color:#999; font-size:12px;">
+              <span class="ind" style="position:absolute; right:-10px;">3</span>
+              Option+클릭으로 빠른 제거
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="desc-area">
+      <table class="desc-table">
+        <thead><tr><th style="width:40px;">No</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><strong>컨텍스트 메뉴</strong> — 우클릭 시 표시. macOS NSMenu 네이티브 스타일.</td></tr>
+          <tr><td>2</td><td><strong>플로팅에서 제거</strong> — 편집 모드 외에도 우클릭으로 제거 가능.</td></tr>
+          <tr><td>3</td><td><strong>단축키 안내</strong> — Option+클릭 빠른 제거 힌트.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</main>
+</div>
+<script>
+(function() {
+  'use strict';
+
+  // === 유틸리티 ===
+  function qs(sel, ctx) { return (ctx || document).querySelector(sel); }
+  function qsa(sel, ctx) { return Array.from((ctx || document).querySelectorAll(sel)); }
+
+  // === 사이드바 모바일 토글 ===
+  var toggle = qs('.sidebar-toggle');
+  var sidebar = qs('.sidebar');
+  if (toggle && sidebar) {
+    toggle.addEventListener('click', function() {
+      sidebar.classList.toggle('open');
+    });
+  }
+
+  // === 사이드바 스크롤 추적 ===
+  var tocLinks = qsa('.sidebar-menu a[href^="#"]');
+  if (tocLinks.length > 0) {
+    var sections = tocLinks.map(function(a) {
+      return document.getElementById(a.getAttribute('href').slice(1));
+    }).filter(Boolean);
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          tocLinks.forEach(function(l) { l.classList.remove('active'); });
+          var link = qs('.sidebar-menu a[href="#' + entry.target.id + '"]');
+          if (link) link.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -60% 0px' });
+
+    sections.forEach(function(s) { observer.observe(s); });
+  }
+
+  // === 접기/펼치기 (이벤트 위임) ===
+  document.addEventListener('click', function(e) {
+    var header = e.target.closest('.collapsible-header');
+    if (!header) return;
+    header.classList.toggle('open');
+    var body = header.nextElementSibling;
+    if (body && body.classList.contains('collapsible-body')) {
+      body.hidden = !body.hidden;
+    }
+
+    // Mermaid lazy 렌더링 (아코디언 열림 시)
+    if (body && !body.hidden && typeof mermaid !== 'undefined') {
+      qsa('.mermaid-lazy:not([data-mermaid-done])', body).forEach(function(el) {
+        var id = 'mermaid-' + Math.random().toString(36).slice(2, 9);
+        var code = el.textContent.trim();
+        if (code) {
+          mermaid.render(id, code).then(function(result) {
+            // mermaid.render 는 안전한 SVG를 반환 (외부 입력 아님)
+            el.replaceChildren();
+            el.insertAdjacentHTML('afterbegin', result.svg);
+            el.classList.add('rendered');
+            el.setAttribute('data-mermaid-done', 'true');
+          });
+        }
+      });
+    }
+  });
+
+  // === 모두 펼치기/접기 ===
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest('.toggle-all-btn');
+    if (!btn) return;
+    var expand = btn.getAttribute('data-state') !== 'open';
+    qsa('.collapsible-header').forEach(function(h) {
+      var body = h.nextElementSibling;
+      if (body && body.classList.contains('collapsible-body')) {
+        if (expand) {
+          h.classList.add('open');
+          body.hidden = false;
+        } else {
+          h.classList.remove('open');
+          body.hidden = true;
+        }
+      }
+    });
+    btn.setAttribute('data-state', expand ? 'open' : 'closed');
+    btn.textContent = expand ? '모두 접기' : '모두 펼치기';
+  });
+
+  // === 복사 버튼 (이벤트 위임) ===
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest('.copy-btn');
+    if (!btn) return;
+    var block = btn.closest('.code-block');
+    if (!block) return;
+    var text = block.textContent.replace(btn.textContent, '').trim();
+    navigator.clipboard.writeText(text).then(function() {
+      var orig = btn.textContent;
+      btn.textContent = '복사됨';
+      setTimeout(function() { btn.textContent = orig; }, 1500);
+    });
+  });
+
+  // === 해시 기반 초기 상태 ===
+  var hash = window.location.hash;
+  if (hash) {
+    var target = document.getElementById(hash.slice(1));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+      // 해당 요소가 접힌 아코디언 안에 있으면 펼침
+      var parent = target.closest('.collapsible-body');
+      if (parent && parent.hidden) {
+        parent.hidden = false;
+        var prevHeader = parent.previousElementSibling;
+        if (prevHeader) prevHeader.classList.add('open');
+      }
+    }
+  }
+})();
+
+
+</script>
+</body>
+</html>

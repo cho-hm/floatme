@@ -1,0 +1,137 @@
+/* wireframe.css — Wireframe 전용 스타일 */
+
+/* 화면 블록 */
+.screen-block {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 24px;
+  margin-bottom: 32px;
+}
+.screen-block h2 {
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+}
+
+/* 화면 메타 정보 */
+.screen-meta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 0.82rem;
+  color: var(--text-light);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-color);
+}
+.screen-meta span { white-space: nowrap; }
+
+/* 2단 스펙 레이아웃 */
+.spec-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+/* 목업 영역 */
+.wf-area {
+  background: #fafbfc;
+  border: 2px dashed var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  min-height: 300px;
+  position: relative;
+}
+
+/* 인디케이터 뱃지 (최소 32x32, 0.85rem 이상) */
+.ind {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  min-height: 32px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  position: absolute;
+  z-index: 10;
+  cursor: help;
+  box-shadow: var(--shadow-sm);
+}
+
+/* 설명 테이블 */
+.desc-area { overflow-x: auto; }
+.desc-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.desc-table th,
+.desc-table td {
+  padding: 10px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.88rem;
+}
+.desc-table th {
+  background: var(--bg-subtle);
+  font-weight: 600;
+}
+.desc-table .no-col {
+  width: 50px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--color-accent);
+}
+
+/* 이미지 플레이스홀더 */
+.wf-img-placeholder {
+  background: #e9ecef;
+  border: 1px dashed #ced4da;
+  border-radius: var(--border-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-light);
+  font-size: 0.85rem;
+  min-height: 120px;
+}
+
+/* 변경 이력 (index) */
+.changelog-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 24px;
+}
+.changelog-table th,
+.changelog-table td {
+  padding: 8px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.85rem;
+}
+.changelog-table th { background: var(--bg-subtle); font-weight: 600; }
+
+/* 사이트맵 */
+.sitemap {
+  background: #f5f5f8;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  line-height: 1.8;
+  white-space: pre;
+  overflow-x: auto;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .spec-row { grid-template-columns: 1fr; }
+  .wf-area { min-height: 200px; }
+}

@@ -1,0 +1,97 @@
+product_name: "FloatMe"
+page_title: "2. 앱 선택 팝업"
+version: "v0.1"
+doc_type_label: "Wireframe"
+html_rel_path: "Wireframe/sections"
+extra_css:
+  - wireframe.css
+mermaid_start_on_load: false
+template: "base"
+output_filename: "02-app-selector.html"
+toc_items: |
+  <li><a href="01-floating-bar.html" class="section-link">1. 플로팅 바</a></li>
+  <li class="sidebar-divider"></li>
+  <li><a href="02-app-selector.html" class="section-link active">2. 앱 선택 팝업</a></li>
+  <li><a href="#popup" class="sub-link">2.1 앱 선택 팝업</a></li>
+  <li class="sidebar-divider"></li>
+  <li><a href="03-settings.html" class="section-link">3. 설정</a></li>
+content: |
+  <div class="section-header">
+    <h1>2. 앱 선택 팝업 (App Selector)</h1>
+    <p>FloatMe — v0.1 — 2026-04-17</p>
+  </div>
+
+  <div class="screen-block" id="popup">
+    <h2>2.1 앱 선택 팝업</h2>
+    <table class="screen-meta">
+      <tr><th>시스템</th><td>FloatMe</td><th>화면구분</th><td>Popover</td></tr>
+      <tr><th>URL</th><td>N/A</td><th>화면 ID</th><td>FM-FL-02-001</td></tr>
+    </table>
+
+    <div class="spec-row">
+      <div class="wf-area">
+        <div class="wf" style="position:relative;">
+          <!-- 팝업 -->
+          <div style="background:white; border-radius:12px; box-shadow:0 8px 32px rgba(0,0,0,0.2); width:260px; overflow:hidden;">
+            <!-- 검색 -->
+            <div style="position:relative; padding:12px 12px 8px;">
+              <span class="ind" style="position:absolute; top:4px; left:0;">1</span>
+              <div style="background:#f0f0f0; border-radius:8px; padding:8px 12px; font-size:12px; color:#999;">
+                검색...
+              </div>
+            </div>
+
+            <!-- 앱 리스트 -->
+            <div style="padding:4px 8px; max-height:220px; overflow-y:auto;">
+              <div style="display:flex; align-items:center; gap:10px; padding:8px; border-radius:8px; background:#f0f7ff; position:relative;">
+                <span class="ind" style="position:absolute; top:0; left:-10px;">2</span>
+                <div style="width:28px; height:28px; border-radius:6px; background:linear-gradient(135deg,#5856d6,#af52de); flex-shrink:0;"></div>
+                <span style="font-size:13px; flex:1;">Xcode</span>
+                <span style="color:#007aff; font-size:14px;">✓</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:10px; padding:8px; border-radius:8px;">
+                <div style="width:28px; height:28px; border-radius:6px; background:linear-gradient(135deg,#30b0c7,#34aadc); flex-shrink:0;"></div>
+                <span style="font-size:13px; flex:1;">Safari</span>
+                <span style="color:#007aff; font-size:14px;">✓</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:10px; padding:8px; border-radius:8px; position:relative;">
+                <span class="ind" style="position:absolute; top:0; left:-10px;">3</span>
+                <div style="width:28px; height:28px; border-radius:6px; background:linear-gradient(135deg,#ff3b30,#ff6b6b); flex-shrink:0;"></div>
+                <span style="font-size:13px; flex:1;">Music</span>
+                <span style="color:#ccc; font-size:14px;"></span>
+              </div>
+              <div style="display:flex; align-items:center; gap:10px; padding:8px; border-radius:8px;">
+                <div style="width:28px; height:28px; border-radius:6px; background:linear-gradient(135deg,#007aff,#5ac8fa); flex-shrink:0;"></div>
+                <span style="font-size:13px; flex:1;">Finder</span>
+                <span style="color:#ccc; font-size:14px;"></span>
+              </div>
+              <div style="display:flex; align-items:center; gap:10px; padding:8px; border-radius:8px;">
+                <div style="width:28px; height:28px; border-radius:6px; background:linear-gradient(135deg,#34c759,#30d158); flex-shrink:0;"></div>
+                <span style="font-size:13px; flex:1;">Messages</span>
+                <span style="color:#ccc; font-size:14px;"></span>
+              </div>
+            </div>
+
+            <!-- 하단 정보 -->
+            <div style="padding:8px 12px; border-top:1px solid #eee; font-size:11px; color:#999; display:flex; justify-content:space-between; position:relative;">
+              <span class="ind" style="position:absolute; top:0; left:-10px;">4</span>
+              <span>실행 중인 앱 5개</span>
+              <span>플로팅 2개</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="desc-area">
+        <table class="desc-table">
+          <thead><tr><th style="width:40px;">No</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td><strong>검색 필드</strong> — 앱 이름으로 필터링. 실시간 검색 (키 입력 시 즉시 필터). 앱이 많을 때 빠르게 찾기 위함.</td></tr>
+            <tr><td>2</td><td><strong>이미 추가된 앱</strong> — 플로팅 바에 이미 등록된 앱. 파란 배경 + 체크마크(✓) 표시. 클릭 시 토글(제거).</td></tr>
+            <tr><td>3</td><td><strong>미추가 앱</strong> — 플로팅에 등록되지 않은 실행 중 앱. 클릭 시 즉시 플로팅에 추가. 체크마크 없음.</td></tr>
+            <tr><td>4</td><td><strong>하단 상태바</strong> — 현재 실행 중인 앱 총 수와 플로팅에 등록된 앱 수 표시.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

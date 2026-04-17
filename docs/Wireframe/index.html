@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wireframe — FloatMe</title>
+<link rel="stylesheet" href="../styles/common.css">
+    <link rel="stylesheet" href="../styles/wireframe.css">
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({ startOnLoad: false, theme: 'default', securityLevel: 'loose' });</script>
+</head>
+<body>
+<div class="page-wrapper">
+<nav class="sidebar" id="sidebar">
+<div class="sidebar-title"><a href="../index.html">FloatMe</a></div>
+<div class="sidebar-section-label">Wireframe v0.1</div>
+<ul class="sidebar-menu">
+<li><a href="../index.html" class="sidebar-home-link">Home</a></li>
+<li class="sidebar-divider"></li>
+<li><a href="sections/01-floating-bar.html" class="section-link">1. 플로팅 바</a></li>
+<li><a href="sections/02-app-selector.html" class="section-link">2. 앱 선택 팝업</a></li>
+<li><a href="sections/03-settings.html" class="section-link">3. 설정</a></li>
+
+</ul>
+</nav>
+<button class="sidebar-toggle" aria-label="메뉴 열기">&#9776;</button>
+<main class="main-content">
+<div class="section-header">
+  <h1>FloatMe Wireframe</h1>
+  <p>v0.1 · 2026-04-17</p>
+</div>
+
+<table class="screen-meta" style="margin:16px 0;">
+  <tr><th>Product</th><td>FloatMe</td></tr>
+  <tr><th>Version</th><td>v0.1</td></tr>
+  <tr><th>Date</th><td>2026-04-17</td></tr>
+  <tr><th>Status</th><td>Draft</td></tr>
+  <tr><th>Platform</th><td>macOS 13+ (Desktop Native)</td></tr>
+</table>
+
+<div class="index-grid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:16px; margin:24px 0;">
+  <div class="index-card" style="border:1px solid var(--border-color); border-radius:8px; padding:20px; background:var(--bg-card);">
+    <h3><a href="sections/01-floating-bar.html">1. 플로팅 바 (Floating Bar)</a></h3>
+    <p style="font-size:0.88rem; color:var(--text-secondary);">항상 최상위에 표시되는 앱 아이콘 바</p>
+    <ul class="index-links" style="font-size:0.85rem; margin-top:8px;">
+      <li><a href="sections/01-floating-bar.html#horizontal">1.1 가로 레이아웃</a></li>
+      <li><a href="sections/01-floating-bar.html#vertical">1.2 세로 레이아웃</a></li>
+      <li><a href="sections/01-floating-bar.html#context-menu">1.3 컨텍스트 메뉴</a></li>
+    </ul>
+  </div>
+  <div class="index-card" style="border:1px solid var(--border-color); border-radius:8px; padding:20px; background:var(--bg-card);">
+    <h3><a href="sections/02-app-selector.html">2. 앱 선택 팝업 (App Selector)</a></h3>
+    <p style="font-size:0.88rem; color:var(--text-secondary);">실행 중인 앱 목록에서 플로팅에 추가</p>
+    <ul class="index-links" style="font-size:0.85rem; margin-top:8px;">
+      <li><a href="sections/02-app-selector.html#popup">2.1 앱 선택 팝업</a></li>
+    </ul>
+  </div>
+  <div class="index-card" style="border:1px solid var(--border-color); border-radius:8px; padding:20px; background:var(--bg-card);">
+    <h3><a href="sections/03-settings.html">3. 설정 (Settings)</a></h3>
+    <p style="font-size:0.88rem; color:var(--text-secondary);">메뉴바 드롭다운 설정</p>
+    <ul class="index-links" style="font-size:0.85rem; margin-top:8px;">
+      <li><a href="sections/03-settings.html#menubar">3.1 메뉴바 메뉴</a></li>
+      <li><a href="sections/03-settings.html#preferences">3.2 환경설정</a></li>
+    </ul>
+  </div>
+</div>
+
+<h2 style="margin-top:32px;">사이트맵</h2>
+<div class="sitemap-wrapper" style="border:1px solid var(--border-color); border-radius:8px; padding:20px; background:var(--bg-card); margin:12px 0;">
+  <div class="sitemap-root" style="text-align:center; margin-bottom:16px;"><strong>FloatMe</strong></div>
+  <div class="sitemap-branches" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:16px;">
+    <div class="sitemap-column">
+      <div class="sitemap-column-header" style="font-weight:600; margin-bottom:8px; padding-bottom:4px; border-bottom:2px solid var(--primary-color);">플로팅 바</div>
+      <div class="sitemap-item" style="font-size:0.85rem; padding:4px 0;">가로 모드</div>
+      <div class="sitemap-item" style="font-size:0.85rem; padding:4px 0;">세로 모드</div>
+      <div class="sitemap-item" style="font-size:0.85rem; padding:4px 0;">컨텍스트 메뉴</div>
+    </div>
+    <div class="sitemap-column">
+      <div class="sitemap-column-header" style="font-weight:600; margin-bottom:8px; padding-bottom:4px; border-bottom:2px solid var(--primary-color);">팝업</div>
+      <div class="sitemap-item" style="font-size:0.85rem; padding:4px 0;">앱 선택</div>
+    </div>
+    <div class="sitemap-column">
+      <div class="sitemap-column-header" style="font-weight:600; margin-bottom:8px; padding-bottom:4px; border-bottom:2px solid var(--primary-color);">설정</div>
+      <div class="sitemap-item" style="font-size:0.85rem; padding:4px 0;">메뉴바 메뉴</div>
+      <div class="sitemap-item" style="font-size:0.85rem; padding:4px 0;">환경설정 창</div>
+    </div>
+  </div>
+</div>
+
+<h2 style="margin-top:24px;">변경 이력</h2>
+<table class="changelog-table striped-table">
+  <thead><tr><th>Version</th><th>Date</th><th>Author</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td>0.1</td><td>2026-04-17</td><td>-</td><td>초기 와이어프레임 생성</td></tr>
+  </tbody>
+</table>
+</main>
+</div>
+<script>
+(function() {
+  'use strict';
+
+  // === 유틸리티 ===
+  function qs(sel, ctx) { return (ctx || document).querySelector(sel); }
+  function qsa(sel, ctx) { return Array.from((ctx || document).querySelectorAll(sel)); }
+
+  // === 사이드바 모바일 토글 ===
+  var toggle = qs('.sidebar-toggle');
+  var sidebar = qs('.sidebar');
+  if (toggle && sidebar) {
+    toggle.addEventListener('click', function() {
+      sidebar.classList.toggle('open');
+    });
+  }
+
+  // === 사이드바 스크롤 추적 ===
+  var tocLinks = qsa('.sidebar-menu a[href^="#"]');
+  if (tocLinks.length > 0) {
+    var sections = tocLinks.map(function(a) {
+      return document.getElementById(a.getAttribute('href').slice(1));
+    }).filter(Boolean);
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          tocLinks.forEach(function(l) { l.classList.remove('active'); });
+          var link = qs('.sidebar-menu a[href="#' + entry.target.id + '"]');
+          if (link) link.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -60% 0px' });
+
+    sections.forEach(function(s) { observer.observe(s); });
+  }
+
+  // === 접기/펼치기 (이벤트 위임) ===
+  document.addEventListener('click', function(e) {
+    var header = e.target.closest('.collapsible-header');
+    if (!header) return;
+    header.classList.toggle('open');
+    var body = header.nextElementSibling;
+    if (body && body.classList.contains('collapsible-body')) {
+      body.hidden = !body.hidden;
+    }
+
+    // Mermaid lazy 렌더링 (아코디언 열림 시)
+    if (body && !body.hidden && typeof mermaid !== 'undefined') {
+      qsa('.mermaid-lazy:not([data-mermaid-done])', body).forEach(function(el) {
+        var id = 'mermaid-' + Math.random().toString(36).slice(2, 9);
+        var code = el.textContent.trim();
+        if (code) {
+          mermaid.render(id, code).then(function(result) {
+            // mermaid.render 는 안전한 SVG를 반환 (외부 입력 아님)
+            el.replaceChildren();
+            el.insertAdjacentHTML('afterbegin', result.svg);
+            el.classList.add('rendered');
+            el.setAttribute('data-mermaid-done', 'true');
+          });
+        }
+      });
+    }
+  });
+
+  // === 모두 펼치기/접기 ===
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest('.toggle-all-btn');
+    if (!btn) return;
+    var expand = btn.getAttribute('data-state') !== 'open';
+    qsa('.collapsible-header').forEach(function(h) {
+      var body = h.nextElementSibling;
+      if (body && body.classList.contains('collapsible-body')) {
+        if (expand) {
+          h.classList.add('open');
+          body.hidden = false;
+        } else {
+          h.classList.remove('open');
+          body.hidden = true;
+        }
+      }
+    });
+    btn.setAttribute('data-state', expand ? 'open' : 'closed');
+    btn.textContent = expand ? '모두 접기' : '모두 펼치기';
+  });
+
+  // === 복사 버튼 (이벤트 위임) ===
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest('.copy-btn');
+    if (!btn) return;
+    var block = btn.closest('.code-block');
+    if (!block) return;
+    var text = block.textContent.replace(btn.textContent, '').trim();
+    navigator.clipboard.writeText(text).then(function() {
+      var orig = btn.textContent;
+      btn.textContent = '복사됨';
+      setTimeout(function() { btn.textContent = orig; }, 1500);
+    });
+  });
+
+  // === 해시 기반 초기 상태 ===
+  var hash = window.location.hash;
+  if (hash) {
+    var target = document.getElementById(hash.slice(1));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+      // 해당 요소가 접힌 아코디언 안에 있으면 펼침
+      var parent = target.closest('.collapsible-body');
+      if (parent && parent.hidden) {
+        parent.hidden = false;
+        var prevHeader = parent.previousElementSibling;
+        if (prevHeader) prevHeader.classList.add('open');
+      }
+    }
+  }
+})();
+
+
+</script>
+</body>
+</html>

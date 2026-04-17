@@ -1,0 +1,86 @@
+product_name: "FloatMe"
+page_title: "Design Documents"
+version: "v0.1"
+doc_type_label: ""
+html_rel_path: ""
+extra_css: []
+mermaid_start_on_load: false
+template: "index"
+generated_date: "2026-04-17"
+output_filename: "index.html"
+content: |
+  <div class="index-header">
+    <h1>FloatMe</h1>
+    <p class="subtitle">macOS Floating App Switcher — 실행 중인 앱을 플로팅 아이콘으로 빠르게 전환</p>
+    <div class="index-meta">
+      <span>Version: v0.1 (Draft)</span>
+      <span>Platform: macOS 13+</span>
+      <span>Date: 2026-04-17</span>
+    </div>
+  </div>
+
+  <div class="index-grid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:20px; margin-top:32px;">
+
+    <div class="index-card" style="border:1px solid var(--border-color); border-radius:12px; padding:24px; background:var(--bg-card);">
+      <h3 style="margin:0 0 8px;"><a href="prd.html" style="color:var(--text-primary); text-decoration:none;">📋 PRD</a></h3>
+      <p style="color:var(--text-secondary); font-size:0.9rem; margin:0 0 12px;">제품 요구사항 정의서</p>
+      <ul style="font-size:0.85rem; color:var(--text-light); padding-left:18px; margin:0;">
+        <li>Product Overview</li>
+        <li>기능 요구사항</li>
+        <li>메뉴 구조 &amp; URL</li>
+      </ul>
+    </div>
+
+    <div class="index-card" style="border:1px solid var(--border-color); border-radius:12px; padding:24px; background:var(--bg-card);">
+      <h3 style="margin:0 0 8px;"><a href="technical-decisions.html" style="color:var(--text-primary); text-decoration:none;">⚡ ADR</a></h3>
+      <p style="color:var(--text-secondary); font-size:0.9rem; margin:0 0 12px;">기술 결정 기록</p>
+      <ul style="font-size:0.85rem; color:var(--text-light); padding-left:18px; margin:0;">
+        <li>UI 프레임워크 선택</li>
+        <li>접근성 API 전략</li>
+        <li>플로팅 윈도우 구현</li>
+      </ul>
+    </div>
+
+    <div class="index-card" style="border:1px solid var(--border-color); border-radius:12px; padding:24px; background:var(--bg-card);">
+      <h3 style="margin:0 0 8px;"><a href="Wireframe/index.html" style="color:var(--text-primary); text-decoration:none;">🎨 Wireframe</a></h3>
+      <p style="color:var(--text-secondary); font-size:0.9rem; margin:0 0 12px;">UI 와이어프레임</p>
+      <ul style="font-size:0.85rem; color:var(--text-light); padding-left:18px; margin:0;">
+        <li>플로팅 바</li>
+        <li>앱 선택 팝업</li>
+        <li>설정 화면</li>
+      </ul>
+    </div>
+
+    <div class="index-card" style="border:1px solid var(--border-color); border-radius:12px; padding:24px; background:var(--bg-card);">
+      <h3 style="margin:0 0 8px;"><a href="api-definition.html" style="color:var(--text-primary); text-decoration:none;">🗄️ 데이터 정의</a></h3>
+      <p style="color:var(--text-secondary); font-size:0.9rem; margin:0 0 12px;">내부 데이터 모델</p>
+      <ul style="font-size:0.85rem; color:var(--text-light); padding-left:18px; margin:0;">
+        <li>앱 정보 모델</li>
+        <li>설정 데이터</li>
+        <li>상태 관리</li>
+      </ul>
+    </div>
+
+    <div class="index-card" style="border:1px solid var(--border-color); border-radius:12px; padding:24px; background:var(--bg-card);">
+      <h3 style="margin:0 0 8px;"><a href="user-stories.html" style="color:var(--text-primary); text-decoration:none;">📖 User Stories</a></h3>
+      <p style="color:var(--text-secondary); font-size:0.9rem; margin:0 0 12px;">사용자 시나리오</p>
+      <ul style="font-size:0.85rem; color:var(--text-light); padding-left:18px; margin:0;">
+        <li>앱 추가/제거</li>
+        <li>앱 전환</li>
+        <li>레이아웃 관리</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div style="margin-top:40px;">
+    <h2 style="font-size:1.2rem; margin-bottom:16px;">Tech Stack</h2>
+    <div style="display:flex; flex-wrap:wrap; gap:8px;">
+      <span class="tag" style="padding:4px 12px; border-radius:20px; background:#e3f2fd; color:#1565c0; font-size:0.82rem;">Swift 5.9+</span>
+      <span class="tag" style="padding:4px 12px; border-radius:20px; background:#e8f5e9; color:#2e7d32; font-size:0.82rem;">SwiftUI</span>
+      <span class="tag" style="padding:4px 12px; border-radius:20px; background:#fff3e0; color:#e65100; font-size:0.82rem;">AppKit</span>
+      <span class="tag" style="padding:4px 12px; border-radius:20px; background:#f3e5f5; color:#7b1fa2; font-size:0.82rem;">Accessibility API</span>
+      <span class="tag" style="padding:4px 12px; border-radius:20px; background:#e0f2f1; color:#00695c; font-size:0.82rem;">macOS 13+</span>
+      <span class="tag" style="padding:4px 12px; border-radius:20px; background:#fce4ec; color:#c62828; font-size:0.82rem;">NSWindow</span>
+    </div>
+  </div>
