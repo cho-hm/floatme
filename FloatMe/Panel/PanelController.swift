@@ -13,7 +13,7 @@ final class PanelController {
     }
 
     func setContentView<V: View>(_ view: V) {
-        let hostingView = NSHostingView(rootView: view)
+        let hostingView = FirstMouseHostingView(rootView: view)
         hostingView.translatesAutoresizingMaskIntoConstraints = false
         panel.contentView = hostingView
     }
@@ -41,4 +41,9 @@ final class PanelController {
         frame.size = size
         panel.setFrame(frame, display: true, animate: true)
     }
+}
+
+/// 첫 클릭을 즉시 수용하는 NSHostingView
+final class FirstMouseHostingView<Content: View>: NSHostingView<Content> {
+    override func acceptsFirstMouse(for event: NSEvent?) -> Bool { true }
 }

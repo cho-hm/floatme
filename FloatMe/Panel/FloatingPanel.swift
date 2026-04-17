@@ -33,7 +33,6 @@ final class FloatingPanel: NSPanel {
 
     override var canBecomeKey: Bool { true }
     override var canBecomeMain: Bool { false }
-    override func acceptsFirstMouse(for event: NSEvent?) -> Bool { true }
 
     private func isInHandle(_ event: NSEvent) -> Bool {
         guard let contentView else { return false }
