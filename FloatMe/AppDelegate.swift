@@ -36,36 +36,36 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func openAppSelector() {
-        if selectorWindow == nil || selectorWindow?.isVisible == false {
-            let view = AppSelectorView(store: store, monitor: monitor)
-            let window = NSWindow(
-                contentRect: NSRect(x: 0, y: 0, width: 260, height: 340),
-                styleMask: [.titled, .closable],
-                backing: .buffered, defer: false
-            )
-            window.contentView = NSHostingView(rootView: view)
-            window.title = "앱 추가"
-            window.center()
-            selectorWindow = window
-        }
-        selectorWindow?.makeKeyAndOrderFront(nil)
+        selectorWindow?.close()
+        let view = AppSelectorView(store: store, monitor: monitor)
+        let window = NSWindow(
+            contentRect: NSRect(x: 0, y: 0, width: 260, height: 340),
+            styleMask: [.titled, .closable],
+            backing: .buffered, defer: false
+        )
+        window.isReleasedWhenClosed = false
+        window.contentView = NSHostingView(rootView: view)
+        window.title = "앱 추가"
+        window.center()
+        selectorWindow = window
+        window.makeKeyAndOrderFront(nil)
         NSApp.activate()
     }
 
     func openSettings() {
-        if settingsWindow == nil || settingsWindow?.isVisible == false {
-            let view = SettingsView(store: store)
-            let window = NSWindow(
-                contentRect: NSRect(x: 0, y: 0, width: 380, height: 500),
-                styleMask: [.titled, .closable],
-                backing: .buffered, defer: false
-            )
-            window.contentView = NSHostingView(rootView: view)
-            window.title = "FloatMe 설정"
-            window.center()
-            settingsWindow = window
-        }
-        settingsWindow?.makeKeyAndOrderFront(nil)
+        settingsWindow?.close()
+        let view = SettingsView(store: store)
+        let window = NSWindow(
+            contentRect: NSRect(x: 0, y: 0, width: 380, height: 400),
+            styleMask: [.titled, .closable],
+            backing: .buffered, defer: false
+        )
+        window.isReleasedWhenClosed = false
+        window.contentView = NSHostingView(rootView: view)
+        window.title = "FloatMe 설정"
+        window.center()
+        settingsWindow = window
+        window.makeKeyAndOrderFront(nil)
         NSApp.activate()
     }
 }
