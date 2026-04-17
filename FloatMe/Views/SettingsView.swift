@@ -75,8 +75,58 @@ struct SettingsView: View {
                     Text("세로").tag(BarOrientation.vertical)
                 }
             }
+
+            Section("숫자 키 단축키") {
+                Toggle("활성화", isOn: Binding(
+                    get: { store.settings.hotkeyEnabled },
+                    set: {
+                        store.settings.hotkeyEnabled = $0
+                        NotificationCenter.default.post(name: .hotkeySettingsChanged, object: nil)
+                    }
+                ))
+
+                if store.settings.hotkeyEnabled {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("조합키 선택")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                        HStack(spacing: 16) {
+                            Toggle("⌘ Cmd", isOn: Binding(
+                                get: { store.settings.hotkeyUseCmd },
+                                set: {
+                                    store.settings.hotkeyUseCmd = $0
+                                    NotificationCenter.default.post(name: .hotkeySettingsChanged, object: nil)
+                                }
+                            ))
+                            Toggle("⌃ Ctrl", isOn: Binding(
+                                get: { store.settings.hotkeyUseCtrl },
+                                set: {
+                                    store.settings.hotkeyUseCtrl = $0
+                                    NotificationCenter.default.post(name: .hotkeySettingsChanged, object: nil)
+                                }
+                            ))
+                            Toggle("⌥ Option", isOn: Binding(
+                                get: { store.settings.hotkeyUseOption },
+                                set: {
+                                    store.settings.hotkeyUseOption = $0
+                                    NotificationCenter.default.post(name: .hotkeySettingsChanged, object: nil)
+                                }
+                            ))
+                        }
+                        .toggleStyle(.checkbox)
+
+                        Text("선택한 조합키 + 1~0 으로 플로팅 바의 앱을 전환합니다")
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
+                    }
+                }
+            }
         }
         .formStyle(.grouped)
-        .frame(width: 380, height: 400)
+        .frame(width: 380, height: 500)
     }
+}
+
+extension Notification.Name {
+    static let hotkeySettingsChanged = Notification.Name("com.floatme.hotkeySettingsChanged")
 }

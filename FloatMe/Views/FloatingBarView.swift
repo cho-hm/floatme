@@ -12,7 +12,7 @@ struct FloatingBarView: View {
     private var isHorizontal: Bool { store.settings.orientation == .horizontal }
 
     private var effectiveIconSize: CGFloat {
-        let count = CGFloat(store.settings.pinnedApps.count + (editMode.isActive ? 1 : 0))
+        let count = CGFloat(visibleApps.count + (editMode.isActive ? 1 : 0))
         guard count > 0 else { return CGFloat(store.settings.iconSize) }
         let baseSize = CGFloat(store.settings.iconSize)
         let screenFrame = NSScreen.main?.visibleFrame ?? NSRect(x: 0, y: 0, width: 1200, height: 800)
@@ -119,11 +119,18 @@ struct FloatingBarView: View {
 
     // MARK: - 아이콘 목록
 
+    /// 고정 목록 중 현재 실행 중인 앱만 표시
+    private var visibleApps: [FloatingApp] {
+        store.settings.pinnedApps.filter { app in
+            monitor.runningApps.contains { $0.bundleIdentifier == app.bundleIdentifier }
+        }
+    }
+
     @ViewBuilder
     private var iconList: some View {
-        let anyFocused = store.settings.pinnedApps.contains { monitor.activeAppBundleId == $0.bundleIdentifier }
+        let anyFocused = visibleApps.contains { monitor.activeAppBundleId == $0.bundleIdentifier }
 
-        ForEach(store.settings.pinnedApps) { app in
+        ForEach(visibleApps) { app in
             let runInfo = monitor.runningApps.first { $0.bundleIdentifier == app.bundleIdentifier }
 
             AppIconView(

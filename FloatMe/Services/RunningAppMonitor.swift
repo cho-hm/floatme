@@ -52,6 +52,12 @@ final class RunningAppMonitor {
 
     func activateApp(_ bundleId: String) {
         guard let app = runningApps.first(where: { $0.bundleIdentifier == bundleId })?.app else { return }
-        app.activate(options: [.activateAllWindows])
+        // .app 번들에서도 동작하도록 unhide 후 activate
+        app.unhide()
+        app.activate()
+        // fallback: NSWorkspace로 앱 URL 열기
+        if let url = app.bundleURL {
+            NSWorkspace.shared.open(url)
+        }
     }
 }

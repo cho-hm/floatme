@@ -24,5 +24,11 @@ struct AppSettings: Codable, Equatable {
     var hideDockIcon: Bool = false
     var edgeSnap: Bool = true
 
+    // 핫키 설정
+    var hotkeyEnabled: Bool = false
+    var hotkeyUseCmd: Bool = true
+    var hotkeyUseCtrl: Bool = false
+    var hotkeyUseOption: Bool = false
+
     static let `default` = AppSettings()
 }
