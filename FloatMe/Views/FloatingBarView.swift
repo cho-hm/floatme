@@ -36,7 +36,7 @@ struct FloatingBarView: View {
         .padding(8)
         .background(backgroundView)
         .clipShape(RoundedRectangle(cornerRadius: 12))
-        .shadow(radius: 6, y: 2)
+        .shadow(radius: store.settings.backgroundStyle == .transparent ? 0 : 6, y: 2)
         .animation(.easeInOut(duration: 0.3), value: showHandle)
         .onHover { onBarHoverChanged($0) }
         .onAppear {
