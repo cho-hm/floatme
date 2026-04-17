@@ -54,6 +54,8 @@ struct AppIconView: View {
             }
             Divider()
             Button("플로팅에서 제거") { onRemove() }
+            Divider()
+            Button("종료") { NSApplication.shared.terminate(nil) }
         }
     }
 
