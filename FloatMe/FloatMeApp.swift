@@ -6,7 +6,9 @@ struct FloatMeApp: App {
 
     var body: some Scene {
         Settings {
-            EmptyView()
+            if let store = appDelegate.store {
+                SettingsView(store: store)
+            }
         }
     }
 }
