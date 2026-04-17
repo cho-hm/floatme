@@ -16,6 +16,8 @@ struct AppIconView: View {
     var onRemove: () -> Void
     var onToggleEditMode: () -> Void
     var onToggleOrientation: () -> Void
+    var isLocked: Bool
+    var onToggleLock: () -> Void
 
     @State private var isHovering = false
     @State private var lastTapTime: Date = .distantPast
@@ -46,6 +48,7 @@ struct AppIconView: View {
             }
         }
         .contextMenu {
+            Button(isLocked ? "고정 해제" : "위치 고정") { onToggleLock() }
             Button("편집 모드") { onToggleEditMode() }
             Divider()
             Button("방향 전환") { onToggleOrientation() }

@@ -11,6 +11,7 @@ final class FloatingPanel: NSPanel {
     /// 현재 방향 (가로: 좌측 핸들, 세로: 상단 핸들)
     var isVerticalBar = false
 
+    var isLocked = false
     var onDragEnd: ((CGPoint) -> Void)?
 
     init(contentRect: NSRect) {
@@ -51,7 +52,7 @@ final class FloatingPanel: NSPanel {
     }
 
     override func mouseDown(with event: NSEvent) {
-        if isInHandle(event) {
+        if !isLocked && isInHandle(event) {
             isDragging = true
             dragStartMouseLocation = NSEvent.mouseLocation
             dragStartWindowOrigin = frame.origin

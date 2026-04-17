@@ -46,6 +46,9 @@ struct FloatingBarView: View {
         .onChange(of: store.settings.orientation) { _, _ in
             panelController.panel.isVerticalBar = !isHorizontal
         }
+        .onChange(of: store.settings.barLocked) { _, newValue in
+            panelController.panel.isLocked = newValue
+        }
     }
 
     // MARK: - 가로 모드: [핸들 | 아이콘들 | (+)]
@@ -78,18 +81,19 @@ struct FloatingBarView: View {
 
     @ViewBuilder
     private func handle(isVerticalBar: Bool) -> some View {
-        Group {
+        if store.settings.barLocked { EmptyView() }
+        else { Group {
             if isVerticalBar {
                 RoundedRectangle(cornerRadius: 2)
                     .fill(Color.primary.opacity(showHandle ? 0.25 : 0))
-                    .frame(width: 32, height: 6)
+                    .frame(width: 32, height: 8)
                     .padding(.top, showHandle ? 3 : 0)
                     .padding(.bottom, showHandle ? 5 : 0)
                     .frame(height: showHandle ? nil : 0)
             } else {
                 RoundedRectangle(cornerRadius: 2)
                     .fill(Color.primary.opacity(showHandle ? 0.25 : 0))
-                    .frame(width: 6, height: 32)
+                    .frame(width: 8, height: 32)
                     .padding(.leading, showHandle ? 3 : 0)
                     .padding(.trailing, showHandle ? 5 : 0)
                     .frame(width: showHandle ? nil : 0)
@@ -103,6 +107,7 @@ struct FloatingBarView: View {
             }
         }
         .help("드래그하여 이동")
+        } // else Group
     }
 
     private func onBarHoverChanged(_ hovering: Bool) {
@@ -144,7 +149,9 @@ struct FloatingBarView: View {
                 onOptionTap: { withAnimation { store.removeApp(app.bundleIdentifier) } },
                 onRemove: { withAnimation { store.removeApp(app.bundleIdentifier) } },
                 onToggleEditMode: { withAnimation(.spring(duration: 0.3)) { editMode.isActive.toggle() } },
-                onToggleOrientation: { store.settings.orientation = store.settings.orientation == .horizontal ? .vertical : .horizontal }
+                onToggleOrientation: { store.settings.orientation = store.settings.orientation == .horizontal ? .vertical : .horizontal },
+                isLocked: store.settings.barLocked,
+                onToggleLock: { store.settings.barLocked.toggle() }
             )
             .onDrag { NSItemProvider(object: app.bundleIdentifier as NSString) }
             .onDrop(of: [.text], delegate: ReorderDropDelegate(item: app, store: store))
@@ -211,6 +218,7 @@ struct FloatingBarView: View {
 
     private func setupPanelCallbacks() {
         panelController.panel.isVerticalBar = !isHorizontal
+        panelController.panel.isLocked = store.settings.barLocked
 
         panelController.panel.onDragEnd = { [store] origin in
             let size = panelController.panel.frame.size
