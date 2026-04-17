@@ -28,6 +28,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         panelController.updatePosition(pos)
         panelController.show()
 
+        if store.settings.hideDockIcon {
+            NSApp.setActivationPolicy(.accessory)
+        }
+
         NotificationCenter.default.addObserver(forName: .openSettings, object: nil, queue: .main) { [weak self] _ in
             Task { @MainActor in
                 self?.openSettings()

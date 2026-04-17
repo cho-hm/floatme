@@ -20,7 +20,10 @@ struct SettingsView: View {
                 ))
                 Toggle("Dock 아이콘 숨기기", isOn: Binding(
                     get: { store.settings.hideDockIcon },
-                    set: { store.settings.hideDockIcon = $0 }
+                    set: { newValue in
+                        store.settings.hideDockIcon = newValue
+                        NSApp.setActivationPolicy(newValue ? .accessory : .regular)
+                    }
                 ))
             }
 
