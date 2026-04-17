@@ -49,6 +49,9 @@ struct FloatingBarView: View {
         .onChange(of: store.settings.barLocked) { _, newValue in
             panelController.panel.isLocked = newValue
         }
+        .onChange(of: store.settings.backgroundStyle) { _, newValue in
+            panelController.panel.hasShadow = newValue != .transparent
+        }
     }
 
     // MARK: - 가로 모드: [핸들 | 아이콘들 | (+)]
@@ -219,6 +222,7 @@ struct FloatingBarView: View {
     private func setupPanelCallbacks() {
         panelController.panel.isVerticalBar = !isHorizontal
         panelController.panel.isLocked = store.settings.barLocked
+        panelController.panel.hasShadow = store.settings.backgroundStyle != .transparent
 
         panelController.panel.onDragEnd = { [store] origin in
             let size = panelController.panel.frame.size
