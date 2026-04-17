@@ -37,6 +37,7 @@ struct FloatingBarView: View {
         .background(backgroundView)
         .clipShape(RoundedRectangle(cornerRadius: 12))
         .shadow(radius: 6, y: 2)
+        .animation(.easeInOut(duration: 0.3), value: showHandle)
         .onHover { onBarHoverChanged($0) }
         .onAppear {
             setupPanelCallbacks()
@@ -77,32 +78,32 @@ struct FloatingBarView: View {
 
     @ViewBuilder
     private func handle(isVerticalBar: Bool) -> some View {
-        Group {
-            if isVerticalBar {
-                RoundedRectangle(cornerRadius: 2)
-                    .fill(Color.primary.opacity(0.25))
-                    .frame(width: 32, height: 6)
-                    .padding(.top, 3)
-                    .padding(.bottom, 5)
-            } else {
-                RoundedRectangle(cornerRadius: 2)
-                    .fill(Color.primary.opacity(0.25))
-                    .frame(width: 6, height: 32)
-                    .padding(.leading, 3)
-                    .padding(.trailing, 5)
+        if showHandle {
+            Group {
+                if isVerticalBar {
+                    RoundedRectangle(cornerRadius: 2)
+                        .fill(Color.primary.opacity(0.25))
+                        .frame(width: 32, height: 6)
+                        .padding(.top, 3)
+                        .padding(.bottom, 5)
+                } else {
+                    RoundedRectangle(cornerRadius: 2)
+                        .fill(Color.primary.opacity(0.25))
+                        .frame(width: 6, height: 32)
+                        .padding(.leading, 3)
+                        .padding(.trailing, 5)
+                }
             }
-        }
-        .opacity(showHandle ? 1 : 0)
-        .animation(.easeInOut(duration: 0.3), value: showHandle)
-        .contentShape(Rectangle().inset(by: -4))
-        .onHover { hovering in
-            if hovering {
-                // 핸들 위치 호버 → 즉시 표시
-                handleHoverTimer?.invalidate()
-                showHandle = true
+            .transition(.opacity.combined(with: .scale(scale: 0.5)))
+            .contentShape(Rectangle().inset(by: -4))
+            .onHover { hovering in
+                if hovering {
+                    handleHoverTimer?.invalidate()
+                    showHandle = true
+                }
             }
+            .help("드래그하여 이동")
         }
-        .help("드래그하여 이동")
     }
 
     private func onBarHoverChanged(_ hovering: Bool) {
