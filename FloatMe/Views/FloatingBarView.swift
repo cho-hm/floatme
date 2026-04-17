@@ -86,14 +86,14 @@ struct FloatingBarView: View {
             if isVerticalBar {
                 RoundedRectangle(cornerRadius: 2)
                     .fill(Color.primary.opacity(showHandle ? 0.25 : 0))
-                    .frame(width: 32, height: 8)
+                    .frame(width: 32, height: 10)
                     .padding(.top, showHandle ? 3 : 0)
                     .padding(.bottom, showHandle ? 5 : 0)
                     .frame(height: showHandle ? nil : 0)
             } else {
                 RoundedRectangle(cornerRadius: 2)
                     .fill(Color.primary.opacity(showHandle ? 0.25 : 0))
-                    .frame(width: 8, height: 32)
+                    .frame(width: 10, height: 32)
                     .padding(.leading, showHandle ? 3 : 0)
                     .padding(.trailing, showHandle ? 5 : 0)
                     .frame(width: showHandle ? nil : 0)
