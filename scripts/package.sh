@@ -78,6 +78,11 @@ echo -n "APPL????" > "$APP_BUNDLE/Contents/PkgInfo"
 echo "    App bundle: $APP_BUNDLE"
 
 # 3. DMG 생성
+# Sparkle rpath 수정 + Ad-hoc 서명 + 격리 속성 제거
+install_name_tool -add_rpath "@executable_path/../Frameworks" "$APP_BUNDLE/Contents/MacOS/$APP_NAME" 2>/dev/null
+codesign --force --deep --sign - "$APP_BUNDLE" 2>/dev/null
+xattr -cr "$APP_BUNDLE"
+
 echo "[3/4] Creating DMG..."
 rm -f "$DMG_PATH"
 hdiutil create -volname "$APP_NAME" \

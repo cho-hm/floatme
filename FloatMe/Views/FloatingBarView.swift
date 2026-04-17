@@ -78,44 +78,36 @@ struct FloatingBarView: View {
 
     @ViewBuilder
     private func handle(isVerticalBar: Bool) -> some View {
-        if showHandle {
-            Group {
-                if isVerticalBar {
-                    RoundedRectangle(cornerRadius: 2)
-                        .fill(Color.primary.opacity(0.25))
-                        .frame(width: 32, height: 6)
-                        .padding(.top, 3)
-                        .padding(.bottom, 5)
-                } else {
-                    RoundedRectangle(cornerRadius: 2)
-                        .fill(Color.primary.opacity(0.25))
-                        .frame(width: 6, height: 32)
-                        .padding(.leading, 3)
-                        .padding(.trailing, 5)
-                }
+        Group {
+            if isVerticalBar {
+                RoundedRectangle(cornerRadius: 2)
+                    .fill(Color.primary.opacity(showHandle ? 0.25 : 0))
+                    .frame(width: 32, height: 6)
+                    .padding(.top, showHandle ? 3 : 0)
+                    .padding(.bottom, showHandle ? 5 : 0)
+                    .frame(height: showHandle ? nil : 0)
+            } else {
+                RoundedRectangle(cornerRadius: 2)
+                    .fill(Color.primary.opacity(showHandle ? 0.25 : 0))
+                    .frame(width: 6, height: 32)
+                    .padding(.leading, showHandle ? 3 : 0)
+                    .padding(.trailing, showHandle ? 5 : 0)
+                    .frame(width: showHandle ? nil : 0)
             }
-            .transition(.opacity.combined(with: .scale(scale: 0.5)))
-            .contentShape(Rectangle().inset(by: -4))
-            .onHover { hovering in
-                if hovering {
-                    handleHoverTimer?.invalidate()
-                    showHandle = true
-                }
-            }
-            .help("드래그하여 이동")
         }
+        .contentShape(Rectangle().inset(by: -4))
+        .onHover { hovering in
+            if hovering {
+                handleHoverTimer?.invalidate()
+                showHandle = true
+            }
+        }
+        .help("드래그하여 이동")
     }
 
     private func onBarHoverChanged(_ hovering: Bool) {
         handleHoverTimer?.invalidate()
-        if hovering {
-            // 바 전체 호버 → 1초 후 표시
-            handleHoverTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
-                Task { @MainActor in
-                    showHandle = true
-                }
-            }
-        } else {
+        if !hovering {
             // 바 벗어남 → 1초 후 숨김
             handleHoverTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
                 Task { @MainActor in
@@ -144,7 +136,8 @@ struct FloatingBarView: View {
                 onTap: { monitor.activateApp(app.bundleIdentifier) },
                 onOptionTap: { withAnimation { store.removeApp(app.bundleIdentifier) } },
                 onRemove: { withAnimation { store.removeApp(app.bundleIdentifier) } },
-                onToggleEditMode: { withAnimation(.spring(duration: 0.3)) { editMode.isActive.toggle() } }
+                onToggleEditMode: { withAnimation(.spring(duration: 0.3)) { editMode.isActive.toggle() } },
+                onToggleOrientation: { store.settings.orientation = store.settings.orientation == .horizontal ? .vertical : .horizontal }
             )
             .onDrag { NSItemProvider(object: app.bundleIdentifier as NSString) }
             .onDrop(of: [.text], delegate: ReorderDropDelegate(item: app, store: store))

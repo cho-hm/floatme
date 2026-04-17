@@ -30,7 +30,7 @@ final class FloatingPanel: NSPanel {
         hidesOnDeactivate = false
     }
 
-    override var canBecomeKey: Bool { isDragging }
+    override var canBecomeKey: Bool { true }
     override var canBecomeMain: Bool { false }
 
     private func isInHandle(_ event: NSEvent) -> Bool {

@@ -28,6 +28,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         panelController.updatePosition(pos)
         panelController.show()
 
+        NotificationCenter.default.addObserver(forName: .openSettings, object: nil, queue: .main) { [weak self] _ in
+            self?.openSettings()
+        }
+
         setupAutoRemove()
         registerGlobalHotkeys()
     }

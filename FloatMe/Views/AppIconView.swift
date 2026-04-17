@@ -1,5 +1,9 @@
 import SwiftUI
 
+extension Notification.Name {
+    static let openSettings = Notification.Name("com.floatme.openSettings")
+}
+
 struct AppIconView: View {
     let app: FloatingApp
     let icon: NSImage?
@@ -11,6 +15,7 @@ struct AppIconView: View {
     var onOptionTap: () -> Void
     var onRemove: () -> Void
     var onToggleEditMode: () -> Void
+    var onToggleOrientation: () -> Void
 
     @State private var isHovering = false
     @State private var lastTapTime: Date = .distantPast
@@ -43,9 +48,12 @@ struct AppIconView: View {
         .contextMenu {
             Button("편집 모드") { onToggleEditMode() }
             Divider()
-            Button("플로팅에서 제거") { onRemove() }
+            Button("방향 전환") { onToggleOrientation() }
+            Button("환경설정...") {
+                NotificationCenter.default.post(name: .openSettings, object: nil)
+            }
             Divider()
-            Text(app.appName).foregroundStyle(.secondary)
+            Button("플로팅에서 제거") { onRemove() }
         }
     }
 
