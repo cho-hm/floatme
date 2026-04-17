@@ -53,6 +53,7 @@ final class FloatingPanel: NSPanel {
 
     override func mouseDown(with event: NSEvent) {
         if !isLocked && isInHandle(event) {
+            makeKey()
             isDragging = true
             dragStartMouseLocation = NSEvent.mouseLocation
             dragStartWindowOrigin = frame.origin
