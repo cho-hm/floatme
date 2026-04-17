@@ -41,8 +41,16 @@ struct SettingsView: View {
                     Text("아이콘 크기")
                     Slider(value: Binding(
                         get: { Double(store.settings.iconSize) },
-                        set: { store.settings.iconSize = Int($0) }
-                    ), in: 20...48, step: 2)
+                        set: { newValue in
+                            let snappedValue = Int(newValue)
+                            // 48px 근처(±4) → 스냅
+                            if abs(snappedValue - 48) <= 4 {
+                                store.settings.iconSize = 48
+                            } else {
+                                store.settings.iconSize = snappedValue
+                            }
+                        }
+                    ), in: 20...96, step: 2)
                     Text("\(store.settings.iconSize)px")
                         .monospacedDigit()
                         .frame(width: 40)
