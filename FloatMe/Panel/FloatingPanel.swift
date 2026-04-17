@@ -7,7 +7,7 @@ final class FloatingPanel: NSPanel {
     private var dragStartWindowOrigin: CGPoint?
 
     /// 핸들 히트 영역 크기 (가로=좌측 너비, 세로=상단 높이)
-    var handleSize: CGFloat = 28
+    var handleSize: CGFloat = 34
     /// 현재 방향 (가로: 좌측 핸들, 세로: 상단 핸들)
     var isVerticalBar = false
 
