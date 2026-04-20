@@ -33,10 +33,6 @@ struct FloatingBarView: View {
                 verticalLayout
             }
         }
-        .padding(8)
-        .background(backgroundView)
-        .clipShape(RoundedRectangle(cornerRadius: 12))
-        .shadow(radius: store.settings.backgroundStyle == .transparent ? 0 : 6, y: 2)
         .animation(.easeInOut(duration: 0.3), value: showHandle)
         .onHover { onBarHoverChanged($0) }
         .onAppear {
@@ -63,11 +59,15 @@ struct FloatingBarView: View {
                 iconList
                 addButton
             }
+            .padding(8)
+            .background(innerBackground)
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .shadow(radius: store.settings.backgroundStyle == .transparent ? 0 : 6, y: 2)
         }
         .frame(minHeight: effectiveIconSize + 24)
     }
 
-    // MARK: - 세로 모드: [핸들] / [아이콘들] / [(+)]
+    // MARK: - 세로 모드
 
     private var verticalLayout: some View {
         VStack(spacing: 0) {
@@ -76,6 +76,10 @@ struct FloatingBarView: View {
                 iconList
                 addButton
             }
+            .padding(8)
+            .background(innerBackground)
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .shadow(radius: store.settings.backgroundStyle == .transparent ? 0 : 6, y: 2)
         }
         .frame(minWidth: effectiveIconSize + 24)
     }
@@ -101,7 +105,6 @@ struct FloatingBarView: View {
             if hovering && !showHandle {
                 handleHoverTimer?.invalidate()
                 showHandle = true
-                compensateWindowPosition(appearing: true, isVertical: isVerticalBar)
             }
         }
         .help("드래그하여 이동")
@@ -113,26 +116,10 @@ struct FloatingBarView: View {
         if !hovering {
             handleHoverTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
                 Task { @MainActor in
-                    if showHandle {
-                        showHandle = false
-                        compensateWindowPosition(appearing: false, isVertical: !isHorizontal)
-                    }
+                    showHandle = false
                 }
             }
         }
-    }
-
-    private func compensateWindowPosition(appearing: Bool, isVertical: Bool) {
-        let offset: CGFloat = 10 // 핸들 크기
-        var origin = panelController.panel.frame.origin
-        if isVertical {
-            // 세로: 핸들이 위에 나타남 → 윈도우를 위로
-            origin.y += appearing ? offset : -offset
-        } else {
-            // 가로: 핸들이 왼쪽에 나타남 → 윈도우를 왼쪽으로
-            origin.x += appearing ? -offset : offset
-        }
-        panelController.panel.setFrameOrigin(origin)
     }
 
     // MARK: - 아이콘 목록
@@ -215,7 +202,7 @@ struct FloatingBarView: View {
     // MARK: - 배경
 
     @ViewBuilder
-    private var backgroundView: some View {
+    private var innerBackground: some View {
         switch store.settings.backgroundStyle {
         case .blur:
             VisualEffectView()
