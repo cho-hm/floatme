@@ -16,7 +16,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/macOS-15%2B-blue?style=flat-square" alt="macOS 15+">
   <img src="https://img.shields.io/badge/Swift-5.9%2B-F05138?style=flat-square&logo=swift&logoColor=white" alt="Swift 5.9+">
-  <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="MIT License">
+  <img src="https://img.shields.io/badge/License-Proprietary-red?style=flat-square" alt="Proprietary">
   <img src="https://img.shields.io/github/v/release/cho-hm/floatme?style=flat-square&label=Latest" alt="Latest Release">
 </p>
 
@@ -113,4 +113,4 @@ open dist/FloatMe.app
 
 ## 라이선스
 
-[MIT](LICENSE) — 자유롭게 사용, 수정, 배포할 수 있습니다.
+[Proprietary](LICENSE) — 소스 코드는 열람 가능하나, 수정/재배포/상업적 사용은 금지됩니다. 개인 비상업적 사용만 허용.

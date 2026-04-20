@@ -51,7 +51,7 @@ FloatMe/
 - DMG 직접 배포 (App Store 미사용)
 - ad-hoc 코드 서명 + xattr 격리 제거 (scripts/package.sh에 포함)
 - 정식 배포 시 Apple Developer Program($99/년) + Notarization 필요
-- 라이선스: MIT
+- 라이선스: Proprietary (All Rights Reserved) — 열람만 허용, 수정/재배포/상업적 사용 금지
 
 ## 커밋 컨벤션
 
