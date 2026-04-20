@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/cho-hm/floatme/main/FloatMe/Resources/AppIcon.icns" width="128" height="128" alt="FloatMe Icon">
+  <img src="https://raw.githubusercontent.com/cho-hm/floatme/main/FloatMe/Resources/AppIcon.png" width="128" height="128" alt="FloatMe Icon">
 </p>
 
 <h1 align="center">FloatMe</h1>
