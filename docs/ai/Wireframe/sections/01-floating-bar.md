@@ -4,7 +4,7 @@ id: wireframe-sections-01-floating-bar
 title: "1. 플로팅 바 (Floating Bar)"
 source: ../../../Wireframe/sections/01-floating-bar.html
 related: []
-tags: [floating-bar, edit-mode, horizontal, vertical, context-menu, active-indicator]
+tags: [floating-bar, edit-mode, horizontal, vertical, handle-drag, active-indicator]
 ---
 
 1. 플로팅 바 — FloatMe       
