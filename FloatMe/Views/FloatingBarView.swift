@@ -92,11 +92,11 @@ struct FloatingBarView: View {
         else { Group {
             if isVerticalBar {
                 RoundedRectangle(cornerRadius: 3)
-                    .fill(Color.primary.opacity(showHandle ? 0.3 : 0))
+                    .fill(Color.primary.opacity(showHandle ? 0.45 : 0))
                     .frame(width: 32, height: 10)
             } else {
                 RoundedRectangle(cornerRadius: 3)
-                    .fill(Color.primary.opacity(showHandle ? 0.3 : 0))
+                    .fill(Color.primary.opacity(showHandle ? 0.45 : 0))
                     .frame(width: 10, height: 32)
             }
         }
