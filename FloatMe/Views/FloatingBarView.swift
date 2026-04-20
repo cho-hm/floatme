@@ -148,7 +148,7 @@ struct FloatingBarView: View {
                 anyFocused: anyFocused,
                 iconSize: effectiveIconSize,
                 isEditMode: editMode.isActive,
-                onTap: { monitor.activateApp(app.bundleIdentifier) },
+                onTap: { monitor.activateApp(app.bundleIdentifier, toggleIfActive: store.settings.toggleActiveApp) },
                 onOptionTap: { withAnimation { store.removeApp(app.bundleIdentifier) } },
                 onRemove: { withAnimation { store.removeApp(app.bundleIdentifier) } },
                 onToggleEditMode: { withAnimation(.spring(duration: 0.3)) { editMode.isActive.toggle() } },

@@ -50,12 +50,16 @@ final class RunningAppMonitor {
         }
     }
 
-    func activateApp(_ bundleId: String) {
+    func activateApp(_ bundleId: String, toggleIfActive: Bool = false) {
         guard let app = runningApps.first(where: { $0.bundleIdentifier == bundleId })?.app else { return }
-        // .app 번들에서도 동작하도록 unhide 후 activate
+
+        if toggleIfActive && activeAppBundleId == bundleId {
+            app.hide()
+            return
+        }
+
         app.unhide()
         app.activate()
-        // fallback: NSWorkspace로 앱 URL 열기
         if let url = app.bundleURL {
             NSWorkspace.shared.open(url)
         }

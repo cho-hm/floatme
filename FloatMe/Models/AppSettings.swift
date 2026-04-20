@@ -24,6 +24,7 @@ struct AppSettings: Codable, Equatable {
     var hideDockIcon: Bool = false
     var edgeSnap: Bool = true
     var barLocked: Bool = false
+    var toggleActiveApp: Bool = false
 
     static let `default` = AppSettings()
 }

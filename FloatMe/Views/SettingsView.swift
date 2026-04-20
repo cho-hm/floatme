@@ -68,6 +68,10 @@ struct SettingsView: View {
             }
 
             Section("동작") {
+                Toggle("활성 앱 재클릭 시 숨기기", isOn: Binding(
+                    get: { store.settings.toggleActiveApp },
+                    set: { store.settings.toggleActiveApp = $0 }
+                ))
                 Toggle("전체화면에서 숨기기", isOn: Binding(
                     get: { store.settings.hideInFullscreen },
                     set: { store.settings.hideInFullscreen = $0 }
