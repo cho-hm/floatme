@@ -34,11 +34,9 @@ struct FloatingBarView: View {
             }
         }
         .padding(8)
-        .background(
-            backgroundView
-                .clipShape(RoundedRectangle(cornerRadius: 12))
-                .shadow(radius: store.settings.backgroundStyle == .transparent ? 0 : 6, y: 2)
-        )
+        .background(backgroundView)
+        .clipShape(RoundedRectangle(cornerRadius: 12))
+        .shadow(radius: store.settings.backgroundStyle == .transparent ? 0 : 6, y: 2)
         .animation(.easeInOut(duration: 0.3), value: showHandle)
         .onHover { onBarHoverChanged($0) }
         .onAppear {
@@ -59,29 +57,27 @@ struct FloatingBarView: View {
     // MARK: - 가로 모드: [핸들 | 아이콘들 | (+)]
 
     private var horizontalLayout: some View {
-        HStack(spacing: 6) {
-            iconList
-            addButton
+        HStack(spacing: 0) {
+            handle(isVerticalBar: false)
+            HStack(spacing: 6) {
+                iconList
+                addButton
+            }
         }
         .frame(minHeight: effectiveIconSize + 24)
-        .overlay(alignment: .leading) {
-            handle(isVerticalBar: false)
-                .offset(x: showHandle ? -18 : 0)
-        }
     }
 
     // MARK: - 세로 모드: [핸들] / [아이콘들] / [(+)]
 
     private var verticalLayout: some View {
-        VStack(spacing: 6) {
-            iconList
-            addButton
+        VStack(spacing: 0) {
+            handle(isVerticalBar: true)
+            VStack(spacing: 6) {
+                iconList
+                addButton
+            }
         }
         .frame(minWidth: effectiveIconSize + 24)
-        .overlay(alignment: .top) {
-            handle(isVerticalBar: true)
-                .offset(y: showHandle ? -18 : 0)
-        }
     }
 
     // MARK: - 핸들
@@ -102,9 +98,10 @@ struct FloatingBarView: View {
         }
         .contentShape(Rectangle().inset(by: -4))
         .onHover { hovering in
-            if hovering {
+            if hovering && !showHandle {
                 handleHoverTimer?.invalidate()
                 showHandle = true
+                compensateWindowPosition(appearing: true, isVertical: isVerticalBar)
             }
         }
         .help("드래그하여 이동")
@@ -114,13 +111,28 @@ struct FloatingBarView: View {
     private func onBarHoverChanged(_ hovering: Bool) {
         handleHoverTimer?.invalidate()
         if !hovering {
-            // 바 벗어남 → 1초 후 숨김
             handleHoverTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
                 Task { @MainActor in
-                    showHandle = false
+                    if showHandle {
+                        showHandle = false
+                        compensateWindowPosition(appearing: false, isVertical: !isHorizontal)
+                    }
                 }
             }
         }
+    }
+
+    private func compensateWindowPosition(appearing: Bool, isVertical: Bool) {
+        let offset: CGFloat = 10 // 핸들 크기
+        var origin = panelController.panel.frame.origin
+        if isVertical {
+            // 세로: 핸들이 위에 나타남 → 윈도우를 위로
+            origin.y += appearing ? offset : -offset
+        } else {
+            // 가로: 핸들이 왼쪽에 나타남 → 윈도우를 왼쪽으로
+            origin.x += appearing ? -offset : offset
+        }
+        panelController.panel.setFrameOrigin(origin)
     }
 
     // MARK: - 아이콘 목록
