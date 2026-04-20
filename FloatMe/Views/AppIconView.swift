@@ -2,6 +2,7 @@ import SwiftUI
 
 extension Notification.Name {
     static let openSettings = Notification.Name("com.floatme.openSettings")
+    static let checkForUpdates = Notification.Name("com.floatme.checkForUpdates")
 }
 
 struct AppIconView: View {
@@ -54,6 +55,9 @@ struct AppIconView: View {
             Button("방향 전환") { onToggleOrientation() }
             Button("환경설정...") {
                 NotificationCenter.default.post(name: .openSettings, object: nil)
+            }
+            Button("업데이트 확인...") {
+                NotificationCenter.default.post(name: .checkForUpdates, object: nil)
             }
             Divider()
             Button("플로팅에서 제거") { onRemove() }

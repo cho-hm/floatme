@@ -4,7 +4,7 @@ set -euo pipefail
 PROJECT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 APP_NAME="FloatMe"
 BUNDLE_ID="com.floatme.app"
-VERSION="0.1.0"
+VERSION="${FLOATME_VERSION:-0.1.0}"
 BUILD_DIR="$PROJECT_DIR/.build/release"
 DIST_DIR="$PROJECT_DIR/dist"
 APP_BUNDLE="$DIST_DIR/$APP_NAME.app"
@@ -62,6 +62,10 @@ cat > "$APP_BUNDLE/Contents/Info.plist" << PLIST
     <string>NSApplication</string>
     <key>NSHighResolutionCapable</key>
     <true/>
+    <key>SUFeedURL</key>
+    <string>https://raw.githubusercontent.com/cho-hm/floatme/main/appcast.xml</string>
+    <key>SUPublicEDKey</key>
+    <string>04oF4K4zcCrEV3W6NbrCOSLK9mbwovy+3bZein7OTL8=</string>
 </dict>
 </plist>
 PLIST

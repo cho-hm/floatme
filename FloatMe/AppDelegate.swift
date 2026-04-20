@@ -1,5 +1,6 @@
 import AppKit
 import SwiftUI
+import Sparkle
 
 @MainActor
 final class AppDelegate: NSObject, NSApplicationDelegate {
@@ -7,11 +8,14 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     var monitor: RunningAppMonitor!
     var panelController: PanelController!
     var menuBarManager: MenuBarManager!
+    var updaterController: SPUStandardUpdaterController!
 
     private var settingsWindow: NSWindow?
     private var selectorWindow: NSWindow?
 
     func applicationDidFinishLaunching(_ notification: Notification) {
+        updaterController = SPUStandardUpdaterController(startingUpdater: true, updaterDelegate: nil, userDriverDelegate: nil)
+
         store = SettingsStore()
         monitor = RunningAppMonitor()
         panelController = PanelController()
@@ -35,6 +39,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         NotificationCenter.default.addObserver(forName: .openSettings, object: nil, queue: .main) { [weak self] _ in
             Task { @MainActor in
                 self?.openSettings()
+            }
+        }
+
+        NotificationCenter.default.addObserver(forName: .checkForUpdates, object: nil, queue: .main) { [weak self] _ in
+            Task { @MainActor in
+                self?.updaterController.checkForUpdates(nil)
             }
         }
     }
