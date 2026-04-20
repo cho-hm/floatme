@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/cho-hm/floatme/main/FloatMe/Resources/AppIcon.png" width="128" height="128" alt="FloatMe Icon">
+  <img src="https://raw.githubusercontent.com/cho-hm/floatme/main/FloatMe/Resources/AppIcon.png" width="128" height="128" alt="FloatMe">
 </p>
 
 <h1 align="center">FloatMe</h1>
@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="#english">English</a> · <a href="#한국어">한국어</a>
+  🇰🇷 한국어 (현재) · <a href="README.en.md">🇺🇸 English</a>
 </p>
 
 <p align="center">
@@ -22,17 +22,13 @@
 
 ---
 
-<a id="한국어"></a>
-
-## 한국어
-
-### FloatMe가 뭔가요?
+## FloatMe가 뭔가요?
 
 macOS의 Cmd+Tab은 앱이 많아지면 원하는 앱을 찾기 어렵습니다. Dock은 화면 아래에 고정되어 있어 접근이 불편할 때가 있습니다.
 
 **FloatMe**는 자주 쓰는 앱들을 작은 아이콘으로 화면 위 어디든 띄워둘 수 있는 유틸리티입니다. 클릭 한 번이면 해당 앱의 모든 윈도우가 최상단으로 올라옵니다.
 
-### 주요 기능
+## 주요 기능
 
 **플로팅 바**
 - 실행 중인 앱을 가로 또는 세로로 나열
@@ -65,9 +61,9 @@ macOS의 Cmd+Tab은 앱이 많아지면 원하는 앱을 찾기 어렵습니다.
 - Sparkle 기반 인앱 업데이트
 - 우클릭 → "업데이트 확인"
 
-### 설치
+## 설치
 
-#### DMG 다운로드 (권장)
+### DMG 다운로드 (권장)
 
 [**최신 릴리스 다운로드**](https://github.com/cho-hm/floatme/releases/latest)
 
@@ -75,7 +71,7 @@ macOS의 Cmd+Tab은 앱이 많아지면 원하는 앱을 찾기 어렵습니다.
 2. FloatMe.app을 Applications 폴더로 이동
 3. 최초 실행 시: 우클릭 → "열기"
 
-#### 소스에서 빌드
+### 소스에서 빌드
 
 ```bash
 git clone https://github.com/cho-hm/floatme.git
@@ -84,7 +80,7 @@ bash scripts/package.sh
 open dist/FloatMe.app
 ```
 
-### 사용법
+## 사용법
 
 | 동작 | 방법 |
 |------|------|
@@ -97,99 +93,15 @@ open dist/FloatMe.app
 | 위치 고정 | 우클릭 → "위치 고정" |
 | 환경설정 | 우클릭 → "환경설정" |
 
-### 요구사항
+## 요구사항
 
 - macOS 15 (Sequoia) 이상
 - Apple Silicon 또는 Intel Mac
 
----
+## 기술 스택
 
-<a id="english"></a>
-
-## English
-
-### What is FloatMe?
-
-When you have many apps open, Cmd+Tab becomes a chore. The Dock sits at the bottom, sometimes hidden or far from your cursor.
-
-**FloatMe** lets you pin your frequently used apps as small floating icons anywhere on your screen. One click brings all windows of that app to the front.
-
-### Features
-
-**Floating Bar**
-- Pin running apps in horizontal or vertical layout
-- Click to switch — brings all windows of the app to front
-- Blue dot indicator for the currently focused app
-- Auto-shrink icons when too many are pinned (min 20px, max 96px)
-
-**Edit Mode**
-- Right-click → "Edit Mode"
-- Icons wiggle like iOS, showing ✕ (remove) and + (add) buttons
-- Drag to reorder icons
-
-**Smart Movement**
-- Drag the handle to position anywhere on screen
-- Auto-snap to screen edges (hold Shift to bypass)
-- Free movement across multiple monitors
-- Lock/unlock position
-
-**Persistent Pinning**
-- Pinned apps survive app restarts — they reappear when relaunched
-- Only explicitly removed apps leave the list
-
-**Customization**
-- Background style: Blur (default) / Dark / Transparent
-- Adjustable opacity and icon size
-- Hide active app on re-click (optional)
-- Hide Dock icon
-
-**Auto Updates**
-- Sparkle-based in-app updates
-- Right-click → "Check for Updates"
-
-### Install
-
-#### Download DMG (Recommended)
-
-[**Download Latest Release**](https://github.com/cho-hm/floatme/releases/latest)
-
-1. Download the DMG file
-2. Drag FloatMe.app to Applications
-3. First launch: Right-click → "Open"
-
-#### Build from Source
-
-```bash
-git clone https://github.com/cho-hm/floatme.git
-cd floatme
-bash scripts/package.sh
-open dist/FloatMe.app
-```
-
-### Usage
-
-| Action | How |
-|--------|-----|
-| Switch app | Click icon |
-| Add app | + button in edit mode, or menu bar |
-| Remove app | ✕ in edit mode, right-click menu, Option+Click |
-| Edit mode | Right-click → "Edit Mode" |
-| Move bar | Drag the handle |
-| Toggle orientation | Right-click → "Toggle Orientation" |
-| Lock position | Right-click → "Lock Position" |
-| Preferences | Right-click → "Preferences" |
-
-### Requirements
-
-- macOS 15 (Sequoia) or later
-- Apple Silicon or Intel Mac
-
----
-
-## Tech Stack
-
-| Layer | Technology |
-|-------|-----------|
+| 레이어 | 기술 |
+|--------|------|
 | Language | Swift 5.9+ |
 | UI | SwiftUI + AppKit Hybrid |
 | Floating Window | NSPanel (nonactivatingPanel) |
@@ -199,6 +111,6 @@ open dist/FloatMe.app
 | Auto Update | Sparkle |
 | Distribution | DMG |
 
-## License
+## 라이선스
 
-[MIT](LICENSE) — 자유롭게 사용, 수정, 배포할 수 있습니다. Free to use, modify, and distribute.
+[MIT](LICENSE) — 자유롭게 사용, 수정, 배포할 수 있습니다.
