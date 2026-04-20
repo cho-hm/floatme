@@ -57,27 +57,29 @@ struct FloatingBarView: View {
     // MARK: - 가로 모드: [핸들 | 아이콘들 | (+)]
 
     private var horizontalLayout: some View {
-        HStack(spacing: 0) {
-            handle(isVerticalBar: false)
-            HStack(spacing: 6) {
-                iconList
-                addButton
-            }
+        HStack(spacing: 6) {
+            iconList
+            addButton
         }
         .frame(minHeight: effectiveIconSize + 24)
+        .overlay(alignment: .leading) {
+            handle(isVerticalBar: false)
+                .offset(x: showHandle ? -18 : 0)
+        }
     }
 
     // MARK: - 세로 모드: [핸들] / [아이콘들] / [(+)]
 
     private var verticalLayout: some View {
-        VStack(spacing: 0) {
-            handle(isVerticalBar: true)
-            VStack(spacing: 6) {
-                iconList
-                addButton
-            }
+        VStack(spacing: 6) {
+            iconList
+            addButton
         }
         .frame(minWidth: effectiveIconSize + 24)
+        .overlay(alignment: .top) {
+            handle(isVerticalBar: true)
+                .offset(y: showHandle ? -18 : 0)
+        }
     }
 
     // MARK: - 핸들
@@ -87,19 +89,13 @@ struct FloatingBarView: View {
         if store.settings.barLocked { EmptyView() }
         else { Group {
             if isVerticalBar {
-                RoundedRectangle(cornerRadius: 2)
-                    .fill(Color.primary.opacity(showHandle ? 0.25 : 0))
+                RoundedRectangle(cornerRadius: 3)
+                    .fill(Color.primary.opacity(showHandle ? 0.3 : 0))
                     .frame(width: 32, height: 10)
-                    .padding(.top, showHandle ? 3 : 0)
-                    .padding(.bottom, showHandle ? 5 : 0)
-                    .frame(height: showHandle ? nil : 0)
             } else {
-                RoundedRectangle(cornerRadius: 2)
-                    .fill(Color.primary.opacity(showHandle ? 0.25 : 0))
+                RoundedRectangle(cornerRadius: 3)
+                    .fill(Color.primary.opacity(showHandle ? 0.3 : 0))
                     .frame(width: 10, height: 32)
-                    .padding(.leading, showHandle ? 3 : 0)
-                    .padding(.trailing, showHandle ? 5 : 0)
-                    .frame(width: showHandle ? nil : 0)
             }
         }
         .contentShape(Rectangle().inset(by: -4))
