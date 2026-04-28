@@ -1,7 +1,7 @@
 ---
 type: index
 generated_at: 2026-04-20T09:43:31.870831+09:00
-source_root: /Users/hyunmin-cho/macapp/floatme/docs
+source_root: ./docs
 language: ko
 total_docs: 9
 ---
