@@ -15,7 +15,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/macOS-15%2B-blue?style=flat-square" alt="macOS 15+">
-  <img src="https://img.shields.io/badge/Swift-5.9%2B-F05138?style=flat-square&logo=swift&logoColor=white" alt="Swift 5.9+">
+  <img src="https://img.shields.io/badge/Swift-6.0%2B-F05138?style=flat-square&logo=swift&logoColor=white" alt="Swift 6.0+">
   <img src="https://img.shields.io/badge/License-Proprietary-red?style=flat-square" alt="Proprietary">
   <img src="https://img.shields.io/github/v/release/cho-hm/floatme?style=flat-square&label=Latest" alt="Latest Release">
 </p>
@@ -50,12 +50,18 @@ When you have many apps open, Cmd+Tab becomes a chore. The Dock sits at the bott
 **Persistent Pinning**
 - Pinned apps survive app restarts — they reappear when relaunched
 - Only explicitly removed apps leave the list
+- Up to 5 apps can be pinned
 
 **Customization**
 - Background style: Blur (default) / Dark / Transparent
-- Adjustable opacity and icon size
+- Adjustable background opacity (50–100%) and icon size (20–96px)
 - Hide active app on re-click (optional)
+- Auto-hide in fullscreen (default ON)
+- Launch at login
 - Hide Dock icon
+
+**Menu Bar**
+- Quick access from the menu bar icon: Show Floating Bar (⌘⇧F), Add App (⌘⇧A), Preferences (⌘,)
 
 **Auto Updates**
 - Sparkle-based in-app updates
@@ -85,13 +91,15 @@ open dist/FloatMe.app
 | Action | How |
 |--------|-----|
 | Switch app | Click icon |
-| Add app | + button in edit mode, or menu bar |
-| Remove app | ✕ in edit mode, right-click menu, Option+Click |
+| Add app | + button in edit mode, menu bar "Add App..." (⌘⇧A) |
+| Remove app | ✕ in edit mode, right-click "Remove from Floating", Option+Click |
 | Edit mode | Right-click → "Edit Mode" |
-| Move bar | Drag the handle |
-| Toggle orientation | Right-click → "Toggle Orientation" |
-| Lock position | Right-click → "Lock Position" |
-| Preferences | Right-click → "Preferences" |
+| Move bar | Drag the handle (hold Shift to bypass snap) |
+| Show/Hide bar | Menu bar → "Show Floating Bar" (⌘⇧F) |
+| Toggle orientation | Right-click or menu bar → "Toggle Orientation" |
+| Lock position | Right-click → "Lock / Unlock Position" |
+| Preferences | Right-click or menu bar → "Preferences..." (⌘,) |
+| Check for updates | Right-click → "Check for Updates..." |
 
 ## Requirements
 
@@ -102,7 +110,7 @@ open dist/FloatMe.app
 
 | Layer | Technology |
 |-------|-----------|
-| Language | Swift 5.9+ |
+| Language | Swift 6.0+ (Xcode 16+) |
 | UI | SwiftUI + AppKit Hybrid |
 | Floating Window | NSPanel (nonactivatingPanel) |
 | App Detection | NSWorkspace Notification |

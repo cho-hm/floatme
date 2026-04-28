@@ -15,7 +15,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/macOS-15%2B-blue?style=flat-square" alt="macOS 15+">
-  <img src="https://img.shields.io/badge/Swift-5.9%2B-F05138?style=flat-square&logo=swift&logoColor=white" alt="Swift 5.9+">
+  <img src="https://img.shields.io/badge/Swift-6.0%2B-F05138?style=flat-square&logo=swift&logoColor=white" alt="Swift 6.0+">
   <img src="https://img.shields.io/badge/License-Proprietary-red?style=flat-square" alt="Proprietary">
   <img src="https://img.shields.io/github/v/release/cho-hm/floatme?style=flat-square&label=Latest" alt="Latest Release">
 </p>
@@ -50,12 +50,18 @@ macOS의 Cmd+Tab은 앱이 많아지면 원하는 앱을 찾기 어렵습니다.
 **앱 영구 등록**
 - 한 번 등록한 앱은 종료 후 재실행해도 자동 복귀
 - 명시적으로 제거하지 않는 한 목록 유지
+- 최대 5개 앱까지 등록 가능
 
 **커스터마이징**
 - 배경 스타일: 블러(기본) / 다크 / 투명
-- 투명도, 아이콘 크기 조절
+- 배경 투명도(50~100%), 아이콘 크기(20~96px) 조절
 - 활성 앱 재클릭 시 숨기기 (선택)
+- 전체화면에서 자동 숨김 (기본 ON)
+- 로그인 시 자동 시작
 - Dock 아이콘 숨기기
+
+**메뉴바**
+- 메뉴바 아이콘에서 빠른 접근: 플로팅 바 표시(⌘⇧F), 앱 추가(⌘⇧A), 환경설정(⌘,)
 
 **자동 업데이트**
 - Sparkle 기반 인앱 업데이트
@@ -85,13 +91,15 @@ open dist/FloatMe.app
 | 동작 | 방법 |
 |------|------|
 | 앱 전환 | 아이콘 클릭 |
-| 앱 추가 | 편집 모드에서 + 버튼, 또는 메뉴바 |
-| 앱 제거 | 편집 모드 ✕, 우클릭 메뉴, Option+클릭 |
+| 앱 추가 | 편집 모드 + 버튼, 메뉴바 "앱 추가..." (⌘⇧A) |
+| 앱 제거 | 편집 모드 ✕, 우클릭 "플로팅에서 제거", Option+클릭 |
 | 편집 모드 | 우클릭 → "편집 모드" |
-| 바 이동 | 핸들 드래그 |
-| 방향 전환 | 우클릭 → "방향 전환" |
-| 위치 고정 | 우클릭 → "위치 고정" |
-| 환경설정 | 우클릭 → "환경설정" |
+| 바 이동 | 핸들 드래그 (Shift 누르면 스냅 무시) |
+| 바 표시/숨김 | 메뉴바 → "플로팅 바 표시" (⌘⇧F) |
+| 방향 전환 | 우클릭 또는 메뉴바 → "방향 전환" |
+| 위치 고정 | 우클릭 → "위치 고정" / "고정 해제" |
+| 환경설정 | 우클릭 또는 메뉴바 → "환경설정..." (⌘,) |
+| 업데이트 확인 | 우클릭 → "업데이트 확인..." |
 
 ## 요구사항
 
@@ -102,7 +110,7 @@ open dist/FloatMe.app
 
 | 레이어 | 기술 |
 |--------|------|
-| Language | Swift 5.9+ |
+| Language | Swift 6.0+ (Xcode 16+) |
 | UI | SwiftUI + AppKit Hybrid |
 | Floating Window | NSPanel (nonactivatingPanel) |
 | App Detection | NSWorkspace Notification |
